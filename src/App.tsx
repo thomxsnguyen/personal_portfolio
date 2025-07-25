@@ -1,12 +1,18 @@
 import "./App.css";
 import HomePage from "./HomePage";
 import NavBar from "./NavBar";
+import Projects from "./Projects";
 
 function App() {
   return (
-    <div className="flex items-center justify-center flex-col">
+    <div className="bg-gray-50 min-h-screen">
       <NavBar />
-      <HomePage name="Thomas Nguyen" />
+      <main className="flex flex-col items-center justify-center">
+        <div className="py-10">
+          <HomePage name="Thomas Nguyen" />
+        </div>
+        <Projects />
+      </main>
     </div>
   );
 }

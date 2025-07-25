@@ -13,22 +13,10 @@ const NavBar: React.FC = () => {
               Home
             </a>
             <a
-              href="#experience"
-              className="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-md font-medium"
-            >
-              Experience
-            </a>
-            <a
               href="#projects"
               className="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-md font-medium"
             >
               Projects
-            </a>
-            <a
-              href="#research"
-              className="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-md font-medium"
-            >
-              Research
             </a>
             <a
               href="#leetcode"
