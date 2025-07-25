@@ -3,3 +3,19 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Add background to navbar when at top */
+nav {
+  background: linear-gradient(
+    to bottom,
+    rgba(249, 250, 251, 0.8) 0%,
+    rgba(249, 250, 251, 0) 100%
+  );
+}
+
+/* Bold underline for navbar links */
+.nav-link-bold-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
