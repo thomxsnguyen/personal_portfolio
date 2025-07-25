@@ -17,16 +17,20 @@ const NavBar: React.FC = () => {
     <nav className="w-full flex justify-center pt-3 sticky top-0 z-50 transition-all duration-300">
       <div className="w-full max-w-4xl mx-auto px-4">
         <div
-          className={`backdrop-blur-md shadow-md rounded-full px-5 py-2 transition-all duration-300 ${
-            isScrolled ? "bg-white/95 shadow-lg" : "bg-white/60 shadow-sm"
-          }`}
+          className={`backdrop-blur-md rounded-full px-5 py-2 transition-all duration-300
+            ${
+              isScrolled
+                ? "bg-white/95 shadow-lg"
+                : "bg-transparent shadow-none"
+            }
+          `}
         >
           <div className="flex items-center justify-between h-10">
             <div className="flex items-center space-x-4">
               <a
                 href="#home"
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
-                  isScrolled ? "text-gray-700" : "text-gray-600"
+                  isScrolled ? "text-gray-700" : "text-gray-700"
                 }`}
               >
                 Home
@@ -34,7 +38,7 @@ const NavBar: React.FC = () => {
               <a
                 href="#projects"
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
-                  isScrolled ? "text-gray-700" : "text-gray-600"
+                  isScrolled ? "text-gray-700" : "text-gray-700"
                 }`}
               >
                 Projects
@@ -42,13 +46,13 @@ const NavBar: React.FC = () => {
               <a
                 href="#leetcode"
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
-                  isScrolled ? "text-gray-700" : "text-gray-600"
+                  isScrolled ? "text-gray-700" : "text-gray-700"
                 }`}
               >
                 LeetCode
               </a>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <a
                   href="https://github.com"
@@ -58,7 +62,7 @@ const NavBar: React.FC = () => {
                   className={`transition-all duration-300 p-1 ${
                     isScrolled
                       ? "text-gray-600 hover:text-gray-900"
-                      : "text-gray-500 hover:text-gray-700"
+                      : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
                   <svg
@@ -77,7 +81,7 @@ const NavBar: React.FC = () => {
                   className={`transition-all duration-300 p-1 ${
                     isScrolled
                       ? "text-gray-600 hover:text-blue-700"
-                      : "text-gray-500 hover:text-blue-600"
+                      : "text-gray-600 hover:text-blue-700"
                   }`}
                 >
                   <svg
@@ -91,7 +95,7 @@ const NavBar: React.FC = () => {
                 <a
                   href="#CV"
                   className={`px-3 py-2 rounded-full text-sm font-bold transition-all duration-300 hover:underline hover:underline-offset-2 ${
-                    isScrolled ? "text-gray-700" : "text-gray-600"
+                    isScrolled ? "text-gray-700" : "text-gray-700"
                   }`}
                 >
                   CV
