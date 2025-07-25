@@ -2,6 +2,7 @@ import "./App.css";
 import HomePage from "./HomePage";
 import NavBar from "./NavBar";
 import Projects from "./Projects";
+import LeetCode from "./LeetCode";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <HomePage name="Thomas Nguyen" />
         </div>
         <Projects />
+        <LeetCode />
       </main>
     </div>
   );

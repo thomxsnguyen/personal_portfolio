@@ -7,7 +7,7 @@ const NavBar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4">
             <a
-              href="#Home"
+              href="#home"
               className="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-md font-medium"
             >
               Home
