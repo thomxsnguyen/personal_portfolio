@@ -6,7 +6,7 @@ import LeetCode from "./pages/LeetCode";
 
 function App() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div id="top" className="bg-gray-50 min-h-screen">
       <NavBar />
       <main className="flex flex-col items-center justify-center">
         <div className="py-10">

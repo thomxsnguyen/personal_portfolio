@@ -51,7 +51,10 @@ function Projects({ projects }: ProjectsProps) {
   const projectData = projects || defaultProjects;
 
   return (
-    <section id="projects" className="w-full max-w-6xl mx-auto px-6 py-12">
+    <section
+      id="projects"
+      className="w-full max-w-6xl mx-auto px-6 pt-32 pb-96"
+    >
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Projects</h2>
         <p className="text-xl text-gray-600">

@@ -28,7 +28,7 @@ function NavBar() {
           <div className="flex items-center justify-between h-10">
             <div className="flex items-center space-x-4">
               <a
-                href="#home"
+                href="#top"
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-gray-700" : "text-gray-700"
                 }`}
