@@ -12,7 +12,7 @@ interface ExperienceProps {
   experiences?: ExperienceItem[];
 }
 
-const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
+function Experience({ experiences }: ExperienceProps) {
   // Default experience data - replace with your actual experience
   const defaultExperiences: ExperienceItem[] = [
     {
@@ -29,12 +29,12 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
     {
       company: "University Research Lab",
       position: "Research Assistant",
-      duration: "September 2022 - Present",
+      duration: "September 2022 - May 2023",
       location: "Irvine, CA",
       description: [
         "Conducted research on machine learning algorithms for data analysis",
-        "Published findings in peer-reviewed conferences",
-        "Mentored undergraduate students in research methodologies",
+        "Published findings in academic journals and presented at conferences",
+        "Collaborated with graduate students and faculty on multiple research projects",
       ],
     },
   ];
@@ -42,40 +42,40 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
   const experienceData = experiences || defaultExperiences;
 
   return (
-    <section id="experience" className="w-full max-w-4xl mx-auto px-6 py-12">
+    <section id="experience" className="w-full max-w-6xl mx-auto px-6 py-12">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Experience</h2>
         <p className="text-xl text-gray-600">
-          My professional journey and achievements
+          My professional journey and accomplishments
         </p>
       </div>
-
       <div className="space-y-8">
-        {experienceData.map((exp, index) => (
+        {experienceData.map((experience, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500"
+            className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500"
           >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-              <div className="mb-2 md:mb-0">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
                 <h3 className="text-xl font-bold text-gray-800">
-                  {exp.position}
+                  {experience.position}
                 </h3>
-                <h4 className="text-lg font-semibold text-blue-600">
-                  {exp.company}
-                </h4>
+                <p className="text-lg font-medium text-blue-600">
+                  {experience.company}
+                </p>
               </div>
-              <div className="text-sm text-gray-500 md:text-right">
-                <p className="font-medium">{exp.duration}</p>
-                <p>{exp.location}</p>
+              <div className="text-right mt-2 md:mt-0">
+                <p className="text-gray-600 font-medium">
+                  {experience.duration}
+                </p>
+                <p className="text-gray-500">{experience.location}</p>
               </div>
             </div>
-
             <ul className="space-y-2">
-              {exp.description.map((desc, descIndex) => (
-                <li key={descIndex} className="text-gray-700 flex items-start">
+              {experience.description.map((item, itemIndex) => (
+                <li key={itemIndex} className="text-gray-700 flex items-start">
                   <span className="text-blue-500 mr-2 mt-1.5">•</span>
-                  <span>{desc}</span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
@@ -84,6 +84,6 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
       </div>
     </section>
   );
-};
+}
 
 export default Experience;

@@ -1,8 +1,8 @@
 import "./App.css";
-import HomePage from "./HomePage";
-import NavBar from "./NavBar";
-import Projects from "./Projects";
-import LeetCode from "./LeetCode";
+import HomePage from "./pages/HomePage";
+import NavBar from "./components/NavBar";
+import Projects from "./pages/Projects";
+import LeetCode from "./pages/LeetCode";
 
 function App() {
   return (
