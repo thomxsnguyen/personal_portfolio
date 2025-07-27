@@ -1,4 +1,5 @@
 import React from "react";
+import MoreProjectsButton from "../components/MoreProjectsButton";
 
 interface ProjectItem {
   title: string;
@@ -139,6 +140,8 @@ function Projects({ projects }: ProjectsProps) {
           </div>
         ))}
       </div>
+
+      <MoreProjectsButton />
     </section>
   );
 }
