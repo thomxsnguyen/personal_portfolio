@@ -1,4 +1,3 @@
-import React from "react";
 import MoreProjectsButton from "../components/MoreProjectsButton";
 
 interface ProjectItem {

@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ExperienceItem {
   company: string;
   position: string;

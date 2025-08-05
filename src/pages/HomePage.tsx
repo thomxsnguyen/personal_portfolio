@@ -1,4 +1,3 @@
-import React from "react";
 import profilePic from "../assets/profilepic.jpg";
 import TypeWriter from "../components/TypeWriter";
 
