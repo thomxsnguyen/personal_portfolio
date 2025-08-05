@@ -1,4 +1,5 @@
-import profilePic from "../assets/profilepic.jpg";
+// Image will be served from public folder
+const profilePic = "/profilepic.JPG";
 import TypeWriter from "../components/TypeWriter";
 
 interface HomePageProps {
