@@ -78,6 +78,10 @@ function HomePage({ name }: HomePageProps) {
                 <span className="font-medium">Machine Research Assistant</span>{" "}
                 @ <span className="text-gray-700">Calit2</span>
               </div>
+              <div className="text-sm text-gray-600">
+                <span className="font-medium">Software Developer</span> @{" "}
+                <span className="text-gray-700">BRSS</span>
+              </div>
             </div>
           </div>
         </div>
