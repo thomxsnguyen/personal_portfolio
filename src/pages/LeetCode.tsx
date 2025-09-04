@@ -60,39 +60,54 @@ function LeetCode() {
         <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-green-600 mb-2">Easy</h3>
-            <div className="text-3xl font-bold text-gray-800">0</div>
+            <div className="text-3xl font-bold text-gray-800">36</div>
             <p className="text-gray-600">Problems Solved</p>
           </div>
           <div className="space-y-3">
-            <p className="text-gray-500 text-center italic">
-              Problems will be showcased here
-            </p>
+            <div className="bg-green-50 p-3 rounded-lg">
+              <p className="text-sm font-medium text-green-800">
+                Recent Solutions
+              </p>
+              <p className="text-xs text-green-600">
+                Two Sum, Valid Parentheses, Merge Sorted Array
+              </p>
+            </div>
           </div>
         </div>
         {/* Medium Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-yellow-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-yellow-600 mb-2">Medium</h3>
-            <div className="text-3xl font-bold text-gray-800">0</div>
+            <div className="text-3xl font-bold text-gray-800">40</div>
             <p className="text-gray-600">Problems Solved</p>
           </div>
           <div className="space-y-3">
-            <p className="text-gray-500 text-center italic">
-              Problems will be showcased here
-            </p>
+            <div className="bg-yellow-50 p-3 rounded-lg">
+              <p className="text-sm font-medium text-yellow-800">
+                Recent Solutions
+              </p>
+              <p className="text-xs text-yellow-600">
+                Add Two Numbers, Longest Substring, 3Sum
+              </p>
+            </div>
           </div>
         </div>
         {/* Hard Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-red-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-red-600 mb-2">Hard</h3>
-            <div className="text-3xl font-bold text-gray-800">0</div>
+            <div className="text-3xl font-bold text-gray-800">12</div>
             <p className="text-gray-600">Problems Solved</p>
           </div>
           <div className="space-y-3">
-            <p className="text-gray-500 text-center italic">
-              Problems will be showcased here
-            </p>
+            <div className="bg-red-50 p-3 rounded-lg">
+              <p className="text-sm font-medium text-red-800">
+                Recent Solutions
+              </p>
+              <p className="text-xs text-red-600">
+                Merge k Sorted Lists, Median of Two Sorted Arrays
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -16,35 +16,25 @@ interface ProjectsProps {
 function Projects({ projects }: ProjectsProps) {
   const defaultProjects: ProjectItem[] = [
     {
-      title: "Portfolio Website",
+      title: "ArtistShuffler",
       description:
-        "A responsive personal portfolio website built with React and TypeScript. Features smooth scrolling, modern design, and mobile-first approach.",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-      demoLink: "https://example.com",
-      githubLink: "https://github.com/username/portfolio",
+        "Full-stack web application using Python and Flask to interact with Spotify's API, enabling music playback from selected artists. Features real-time updates and asynchronous API interactions for seamless user experience.",
+      technologies: ["Python", "Flask", "HTML", "JavaScript", "Spotify API"],
+      githubLink: "https://github.com/thomxsnguyen/ArtistShuffler",
     },
     {
-      title: "Task Management App",
+      title: "FEM Prediction Model",
       description:
-        "A full-stack task management application with user authentication, real-time updates, and collaborative features.",
-      technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
-      demoLink: "https://example.com",
-      githubLink: "https://github.com/username/task-app",
+        "Developed GRU, LSTM, RNN, and RBF-RNN models using PyTorch to forecast thermal energy storage dynamics. Achieved sub-second inference times, outperforming traditional simulations by ~600x. Engineered custom dataset preprocessing and implemented teacher forcing for improved accuracy.",
+      technologies: ["Python", "PyTorch", "GRU", "LSTM", "RNN", "RBF-RNN"],
+      githubLink: "https://github.com/thomxsnguyen/R199",
     },
     {
-      title: "Machine Learning Model",
+      title: "Car Prediction Model",
       description:
-        "Developed a machine learning model for predicting stock prices using historical data and various technical indicators.",
-      technologies: ["Python", "TensorFlow", "Pandas", "Scikit-learn"],
-      githubLink: "https://github.com/username/ml-stock-prediction",
-    },
-    {
-      title: "Mobile Weather App",
-      description:
-        "Cross-platform mobile application that provides weather forecasts with beautiful animations and location-based services.",
-      technologies: ["React Native", "TypeScript", "Weather API", "Expo"],
-      demoLink: "https://example.com",
-      githubLink: "https://github.com/username/weather-app",
+        "Built a neural network using TensorFlow and Keras to predict car purchase decisions from synthetic customer data. Implemented data preprocessing, scaling, and train-test split with Sequential Dense layers.",
+      technologies: ["Python", "TensorFlow", "Keras", "Data Preprocessing"],
+      githubLink: "https://github.com/thomxsnguyen/car-sales-prediction",
     },
   ];
 
