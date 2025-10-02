@@ -13,7 +13,7 @@ function App() {
           <HomePage name="Thomas Nguyen" />
         </div>
         <Projects />
-        <LeetCode />
+        <LeetCode username="thomasn8255" />
       </main>
     </div>
   );

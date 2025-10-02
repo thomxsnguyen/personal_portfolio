@@ -30,7 +30,7 @@ function HomePage({ name }: HomePageProps) {
               </svg>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/thomxsnguyen5/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"

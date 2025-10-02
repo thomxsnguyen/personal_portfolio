@@ -1,5 +1,21 @@
-function LeetCode() {
-  const recentProblems = [
+import { useEffect, useState } from "react";
+
+interface LeetCodeProps {
+  username?: string;
+}
+
+type RecentProblem = {
+  id: number | string;
+  title: string;
+  difficulty: "Easy" | "Medium" | "Hard" | string;
+  difficultyColor: string;
+  bgColor: string;
+  date?: string;
+  link: string;
+};
+
+function LeetCode({ username = "your-username" }: LeetCodeProps) {
+  const fallbackProblems: RecentProblem[] = [
     {
       id: 1,
       title: "Two Sum",
@@ -47,6 +63,109 @@ function LeetCode() {
     },
   ];
 
+  const [easySolved, setEasySolved] = useState<number | null>(null);
+  const [mediumSolved, setMediumSolved] = useState<number | null>(null);
+  const [hardSolved, setHardSolved] = useState<number | null>(null);
+  const [recentProblems, setRecentProblems] =
+    useState<RecentProblem[]>(fallbackProblems);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!username || username === "your-username") return;
+
+    const controller = new AbortController();
+    const fetchStats = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        // Public LeetCode stats API (community, CORS enabled)
+        // Example: https://leetcode-api-faisalshohag.vercel.app/thomxsnguyen
+        const res = await fetch(
+          `https://leetcode-api-faisalshohag.vercel.app/${encodeURIComponent(
+            username
+          )}`,
+          { signal: controller.signal }
+        );
+        if (!res.ok)
+          throw new Error(`Failed to load LeetCode data (${res.status})`);
+        const data = await res.json();
+
+        // Counts
+        const easy = data?.easySolved ?? data?.totalEasy ?? null;
+        const medium = data?.mediumSolved ?? data?.totalMedium ?? null;
+        const hard = data?.hardSolved ?? data?.totalHard ?? null;
+        setEasySolved(typeof easy === "number" ? easy : null);
+        setMediumSolved(typeof medium === "number" ? medium : null);
+        setHardSolved(typeof hard === "number" ? hard : null);
+
+        // Recent submissions
+        const submissions = (data?.recentSubmissions || []) as Array<{
+          title?: string;
+          titleSlug?: string;
+          timestamp?: number | string;
+          statusDisplay?: string;
+          lang?: string;
+          difficulty?: string;
+        }>;
+
+        if (Array.isArray(submissions) && submissions.length > 0) {
+          const mapped: RecentProblem[] = submissions
+            .slice(0, 10)
+            .map((s, idx) => {
+              const difficulty = (s.difficulty || "").toString();
+              const isEasy = /easy/i.test(difficulty);
+              const isMedium = /medium/i.test(difficulty);
+              const isHard = /hard/i.test(difficulty);
+              return {
+                id: s.titleSlug || idx,
+                title: s.title || s.titleSlug || "LeetCode Problem",
+                difficulty: isEasy
+                  ? "Easy"
+                  : isMedium
+                  ? "Medium"
+                  : isHard
+                  ? "Hard"
+                  : difficulty || "",
+                difficultyColor: isEasy
+                  ? "text-green-600"
+                  : isMedium
+                  ? "text-yellow-600"
+                  : isHard
+                  ? "text-red-600"
+                  : "text-gray-600",
+                bgColor: isEasy
+                  ? "bg-green-50"
+                  : isMedium
+                  ? "bg-yellow-50"
+                  : isHard
+                  ? "bg-red-50"
+                  : "bg-gray-50",
+                date: s.timestamp
+                  ? new Date(Number(s.timestamp) * 1000).toLocaleDateString()
+                  : undefined,
+                link: s.titleSlug
+                  ? `https://leetcode.com/problems/${s.titleSlug}/`
+                  : "https://leetcode.com/problemset/",
+              };
+            });
+          setRecentProblems(mapped);
+        }
+      } catch (e: unknown) {
+        setError(
+          e instanceof Error ? e.message : "Failed to load LeetCode data"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
+    return () => controller.abort();
+  }, [username]);
+
+  const profileUrl = `https://leetcode.com/${username}/`;
+
   return (
     <section id="leetcode" className="w-full max-w-6xl mx-auto px-6 py-32">
       <div className="text-center mb-12">
@@ -54,13 +173,26 @@ function LeetCode() {
         <p className="text-xl text-gray-600">
           My coding problem solutions and progress
         </p>
+        <div className="mt-4">
+          <a
+            href={profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 rounded-md bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
+          >
+            View LeetCode Profile
+          </a>
+          <p className="text-xs text-gray-500 mt-2">Username: {username}</p>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         {/* Easy Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-green-600 mb-2">Easy</h3>
-            <div className="text-3xl font-bold text-gray-800">36</div>
+            <div className="text-3xl font-bold text-gray-800">
+              {easySolved ?? 0}
+            </div>
             <p className="text-gray-600">Problems Solved</p>
           </div>
           <div className="space-y-3">
@@ -69,7 +201,11 @@ function LeetCode() {
                 Recent Solutions
               </p>
               <p className="text-xs text-green-600">
-                Two Sum, Valid Parentheses, Merge Sorted Array
+                {recentProblems
+                  .filter((p) => p.difficulty === "Easy")
+                  .slice(0, 3)
+                  .map((p) => p.title)
+                  .join(", ") || "—"}
               </p>
             </div>
           </div>
@@ -78,7 +214,9 @@ function LeetCode() {
         <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-yellow-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-yellow-600 mb-2">Medium</h3>
-            <div className="text-3xl font-bold text-gray-800">40</div>
+            <div className="text-3xl font-bold text-gray-800">
+              {mediumSolved ?? 0}
+            </div>
             <p className="text-gray-600">Problems Solved</p>
           </div>
           <div className="space-y-3">
@@ -87,7 +225,11 @@ function LeetCode() {
                 Recent Solutions
               </p>
               <p className="text-xs text-yellow-600">
-                Add Two Numbers, Longest Substring, 3Sum
+                {recentProblems
+                  .filter((p) => p.difficulty === "Medium")
+                  .slice(0, 3)
+                  .map((p) => p.title)
+                  .join(", ") || "—"}
               </p>
             </div>
           </div>
@@ -96,7 +238,9 @@ function LeetCode() {
         <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-red-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-red-600 mb-2">Hard</h3>
-            <div className="text-3xl font-bold text-gray-800">12</div>
+            <div className="text-3xl font-bold text-gray-800">
+              {hardSolved ?? 0}
+            </div>
             <p className="text-gray-600">Problems Solved</p>
           </div>
           <div className="space-y-3">
@@ -105,7 +249,11 @@ function LeetCode() {
                 Recent Solutions
               </p>
               <p className="text-xs text-red-600">
-                Merge k Sorted Lists, Median of Two Sorted Arrays
+                {recentProblems
+                  .filter((p) => p.difficulty === "Hard")
+                  .slice(0, 3)
+                  .map((p) => p.title)
+                  .join(", ") || "—"}
               </p>
             </div>
           </div>
@@ -118,6 +266,14 @@ function LeetCode() {
           Recent Problems Solved
         </h3>
         <div className="bg-white rounded-lg shadow-lg p-6">
+          {loading && (
+            <div className="text-center text-sm text-gray-500">
+              Loading recent problems…
+            </div>
+          )}
+          {error && (
+            <div className="text-center text-sm text-red-600 mb-4">{error}</div>
+          )}
           <div className="space-y-4">
             {recentProblems.map((problem) => (
               <div
@@ -139,9 +295,11 @@ function LeetCode() {
                     >
                       {problem.difficulty}
                     </span>
-                    <span className="text-sm text-gray-500">
-                      {problem.date}
-                    </span>
+                    {problem.date && (
+                      <span className="text-sm text-gray-500">
+                        {problem.date}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="ml-4">
