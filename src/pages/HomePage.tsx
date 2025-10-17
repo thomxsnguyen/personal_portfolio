@@ -8,9 +8,12 @@ interface HomePageProps {
 
 function HomePage({ name }: HomePageProps) {
   return (
-    <section id="home" className="flex flex-col items-center pt-56 pb-96 p-40">
-      <div className="flex flex-row items-start gap-x-18">
-        <div className="flex flex-col gap-y-.5 h-72 justify-start">
+    <section
+      id="home"
+      className="flex flex-col items-center pt-56 pb-96 p-6 md:p-40"
+    >
+      <div className="flex flex-row items-start gap-x-18 w-full max-w-6xl">
+        <div className="flex flex-col gap-y-1">
           <TypeWriter
             texts={[name, "Computer Science Student at UCI"]}
             speeds={[50, 40]}
@@ -19,7 +22,7 @@ function HomePage({ name }: HomePageProps) {
           />
           <div className="flex items-center space-x-4 mt-4">
             <a
-              href="https://github.com"
+              href="https://github.com/thomxsnguyen"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
@@ -40,49 +43,16 @@ function HomePage({ name }: HomePageProps) {
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
             </a>
+            <a href="#" aria-label="" className="hidden"></a>
             <a
-              href="mailto:thomasn8255@gmail.com"
-              aria-label="Email"
-              className="text-gray-600 hover:scale-125 transition-transform duration-300 p-1"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-              </svg>
-            </a>
-            <a
-              href="#CV"
+              href="/Nguyen,Thomas.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="CV"
               className="text-gray-600 hover:scale-110 transition-transform duration-300 p-1 text-lg font-bold"
             >
               CV
             </a>
-          </div>
-
-          {/* Currently Working Section */}
-          <div className="mt-12">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">
-              Currently Working
-            </h3>
-            <div className="space-y-2">
-              <div className="text-sm text-gray-600">
-                <span className="font-medium">Software Engineer Intern</span> @{" "}
-                <span className="text-gray-700">Sportstake</span>
-              </div>
-              <div className="text-sm text-gray-600">
-                <span className="font-medium">
-                  Software Developer Research Assistant
-                </span>{" "}
-                @ <span className="text-gray-700">dapLab</span>
-              </div>
-              <div className="text-sm text-gray-600">
-                <span className="font-medium">Machine Research Assistant</span>{" "}
-                @ <span className="text-gray-700">Calit2</span>
-              </div>
-              <div className="text-sm text-gray-600">
-                <span className="font-medium">Software Developer</span> @{" "}
-                <span className="text-gray-700">BRSS</span>
-              </div>
-            </div>
           </div>
         </div>
         <img
@@ -90,6 +60,33 @@ function HomePage({ name }: HomePageProps) {
           alt="profilepic"
           className="w-54 h-54 rounded-full object-cover shadow-lg -mt-8"
         />
+      </div>
+
+      {/* Currently Working Section */}
+      <div className="w-full max-w-6xl mt-8 px-2">
+        <h3 className="text-lg font-semibold text-gray-800 mb-3">
+          Currently Working
+        </h3>
+        <div className="space-y-2">
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">Software Engineer Intern</span> @{" "}
+            <span className="text-gray-700">Sportstake</span>
+          </div>
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">
+              Software Developer Research Assistant
+            </span>{" "}
+            @ <span className="text-gray-700">dapLab</span>
+          </div>
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">Machine Research Assistant</span> @{" "}
+            <span className="text-gray-700">Calit2</span>
+          </div>
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">Software Developer</span> @{" "}
+            <span className="text-gray-700">BRSS</span>
+          </div>
+        </div>
       </div>
     </section>
   );

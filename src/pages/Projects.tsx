@@ -76,7 +76,7 @@ function Projects({ projects }: ProjectsProps) {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full font-medium"
+                      className="px-3 py-1 bg-blue-50 text-blue-400 text-sm rounded-full font-medium"
                     >
                       {tech}
                     </span>
@@ -89,7 +89,7 @@ function Projects({ projects }: ProjectsProps) {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:scale-110 transition-transform duration-300"
+                    className="inline-flex items-center px-4 py-2 bg-blue-300 text-white rounded-md hover:scale-110 transition-transform duration-300"
                   >
                     <svg
                       className="w-4 h-4 mr-2"

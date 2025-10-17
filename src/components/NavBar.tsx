@@ -30,7 +30,7 @@ function NavBar() {
               <a
                 href="#top"
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
-                  isScrolled ? "text-gray-700" : "text-gray-700"
+                  isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
               >
                 Home
@@ -38,7 +38,7 @@ function NavBar() {
               <a
                 href="#projects"
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
-                  isScrolled ? "text-gray-700" : "text-gray-700"
+                  isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
               >
                 Projects
@@ -46,7 +46,7 @@ function NavBar() {
               <a
                 href="#leetcode"
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
-                  isScrolled ? "text-gray-700" : "text-gray-700"
+                  isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
               >
                 LeetCode
@@ -54,7 +54,7 @@ function NavBar() {
             </div>
             <span
               className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                isScrolled ? "text-gray-700" : "text-gray-700"
+                isScrolled ? "text-blue-400" : "text-blue-300"
               }`}
             >
               2025

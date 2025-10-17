@@ -11,7 +11,7 @@ function MoreProjectsButton({
     <div className={`flex justify-start mt-12 ${className}`}>
       <a
         href={href}
-        className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:scale-110 transition-transform duration-300 font-medium shadow-md"
+        className="inline-flex items-center px-6 py-3 bg-blue-300 text-white rounded-lg hover:scale-110 transition-transform duration-300 font-medium shadow-md"
       >
         More projects
         <svg

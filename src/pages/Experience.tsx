@@ -51,14 +51,14 @@ function Experience({ experiences }: ExperienceProps) {
         {experienceData.map((experience, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500"
+            className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-300"
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
               <div>
                 <h3 className="text-xl font-bold text-gray-800">
                   {experience.position}
                 </h3>
-                <p className="text-lg font-medium text-blue-600">
+                <p className="text-lg font-medium text-blue-400">
                   {experience.company}
                 </p>
               </div>
@@ -72,7 +72,7 @@ function Experience({ experiences }: ExperienceProps) {
             <ul className="space-y-2">
               {experience.description.map((item, itemIndex) => (
                 <li key={itemIndex} className="text-gray-700 flex items-start">
-                  <span className="text-blue-500 mr-2 mt-1.5">•</span>
+                  <span className="text-blue-300 mr-2 mt-1.5">•</span>
                   <span>{item}</span>
                 </li>
               ))}

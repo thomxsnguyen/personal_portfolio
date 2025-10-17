@@ -12,6 +12,8 @@ type RecentProblem = {
   bgColor: string;
   date?: string;
   link: string;
+  // internal sort key
+  _ts?: number;
 };
 
 function LeetCode({ username = "your-username" }: LeetCodeProps) {
@@ -68,6 +70,9 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
   const [hardSolved, setHardSolved] = useState<number | null>(null);
   const [recentProblems, setRecentProblems] =
     useState<RecentProblem[]>(fallbackProblems);
+  const [easyRecent, setEasyRecent] = useState<RecentProblem[]>([]);
+  const [mediumRecent, setMediumRecent] = useState<RecentProblem[]>([]);
+  const [hardRecent, setHardRecent] = useState<RecentProblem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -111,12 +116,13 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
 
         if (Array.isArray(submissions) && submissions.length > 0) {
           const mapped: RecentProblem[] = submissions
-            .slice(0, 10)
+            .slice(0, 200)
             .map((s, idx) => {
-              const difficulty = (s.difficulty || "").toString();
-              const isEasy = /easy/i.test(difficulty);
-              const isMedium = /medium/i.test(difficulty);
-              const isHard = /hard/i.test(difficulty);
+              const difficultyStr = (s.difficulty || "").toString();
+              const isEasy = /easy/i.test(difficultyStr);
+              const isMedium = /medium/i.test(difficultyStr);
+              const isHard = /hard/i.test(difficultyStr);
+              const ts = Number(s.timestamp);
               return {
                 id: s.titleSlug || idx,
                 title: s.title || s.titleSlug || "LeetCode Problem",
@@ -126,7 +132,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                   ? "Medium"
                   : isHard
                   ? "Hard"
-                  : difficulty || "",
+                  : difficultyStr || "",
                 difficultyColor: isEasy
                   ? "text-green-600"
                   : isMedium
@@ -141,15 +147,37 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                   : isHard
                   ? "bg-red-50"
                   : "bg-gray-50",
-                date: s.timestamp
-                  ? new Date(Number(s.timestamp) * 1000).toLocaleDateString()
+                date: Number.isFinite(ts)
+                  ? new Date(ts * 1000).toLocaleDateString()
                   : undefined,
                 link: s.titleSlug
                   ? `https://leetcode.com/problems/${s.titleSlug}/`
                   : "https://leetcode.com/problemset/",
+                _ts: Number.isFinite(ts) ? ts : 0,
               };
-            });
+            })
+            .sort((a, b) => (b._ts ?? 0) - (a._ts ?? 0));
+
           setRecentProblems(mapped);
+
+          // Group and take the top 3 by difficulty
+          const easyTop = mapped
+            .filter((p) => p.difficulty === "Easy")
+            .slice(0, 3);
+          const mediumTop = mapped
+            .filter((p) => p.difficulty === "Medium")
+            .slice(0, 3);
+          const hardTop = mapped
+            .filter((p) => p.difficulty === "Hard")
+            .slice(0, 3);
+
+          setEasyRecent(easyTop);
+          setMediumRecent(mediumTop);
+          setHardRecent(hardTop);
+        } else {
+          setEasyRecent([]);
+          setMediumRecent([]);
+          setHardRecent([]);
         }
       } catch (e: unknown) {
         setError(
@@ -201,9 +229,12 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                 Recent Solutions
               </p>
               <p className="text-xs text-green-600">
-                {recentProblems
-                  .filter((p) => p.difficulty === "Easy")
-                  .slice(0, 3)
+                {(easyRecent.length > 0
+                  ? easyRecent
+                  : recentProblems
+                      .filter((p) => p.difficulty === "Easy")
+                      .slice(0, 3)
+                )
                   .map((p) => p.title)
                   .join(", ") || "—"}
               </p>
@@ -225,9 +256,12 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                 Recent Solutions
               </p>
               <p className="text-xs text-yellow-600">
-                {recentProblems
-                  .filter((p) => p.difficulty === "Medium")
-                  .slice(0, 3)
+                {(mediumRecent.length > 0
+                  ? mediumRecent
+                  : recentProblems
+                      .filter((p) => p.difficulty === "Medium")
+                      .slice(0, 3)
+                )
                   .map((p) => p.title)
                   .join(", ") || "—"}
               </p>
@@ -249,9 +283,12 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                 Recent Solutions
               </p>
               <p className="text-xs text-red-600">
-                {recentProblems
-                  .filter((p) => p.difficulty === "Hard")
-                  .slice(0, 3)
+                {(hardRecent.length > 0
+                  ? hardRecent
+                  : recentProblems
+                      .filter((p) => p.difficulty === "Hard")
+                      .slice(0, 3)
+                )
                   .map((p) => p.title)
                   .join(", ") || "—"}
               </p>
@@ -285,7 +322,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                     href={problem.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors duration-300"
+                    className="text-lg font-medium text-gray-800 hover:text-blue-400 transition-colors duration-300"
                   >
                     {problem.title}
                   </a>
