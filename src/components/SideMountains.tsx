@@ -1,52 +1,100 @@
 function SideMountains() {
   return (
     <>
-      {/* Left side mountain */}
-      <div className="fixed left-0 bottom-0 pointer-events-none z-10">
+      {/* Left side mountain with morning sky - FULL HEIGHT */}
+      <div className="fixed left-0 top-0 h-screen pointer-events-none z-10">
         <svg
           width="350"
-          height="500"
-          viewBox="0 0 350 500"
+          height="100%"
+          viewBox="0 0 350 1080"
+          preserveAspectRatio="none"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-gray-400"
         >
-          {/* Far mountain */}
-          <path
-            d="M0 500 L70 350 L140 400 L210 320 L280 380 L350 280 L350 500 Z"
-            fill="currentColor"
-            opacity="0.4"
+          {/* Morning sky gradient */}
+          <defs>
+            <linearGradient
+              id="skyGradientLeft"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.5" />
+              <stop offset="40%" stopColor="#BFDBFE" stopOpacity="0.4" />
+              <stop offset="70%" stopColor="#DBEAFE" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#F0F9FF" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+
+          {/* Sky background */}
+          <rect
+            x="0"
+            y="0"
+            width="350"
+            height="1080"
+            fill="url(#skyGradientLeft)"
           />
-          {/* Near mountain */}
+
+          {/* Bottom mountains */}
           <path
-            d="M0 500 L50 420 L100 460 L150 390 L200 450 L250 360 L300 420 L350 500 Z"
-            fill="currentColor"
-            opacity="0.6"
+            d="M0 1080 L70 930 L140 980 L210 900 L280 960 L350 860 L350 1080 Z"
+            fill="#9CA3AF"
+            opacity="0.5"
+          />
+          <path
+            d="M0 1080 L50 1000 L100 1040 L150 970 L200 1030 L250 940 L300 1000 L350 1080 Z"
+            fill="#6B7280"
+            opacity="0.7"
           />
         </svg>
       </div>
 
-      {/* Right side mountain */}
-      <div className="fixed right-0 bottom-0 pointer-events-none z-10">
+      {/* Right side mountain with morning sky - FULL HEIGHT */}
+      <div className="fixed right-0 top-0 h-screen pointer-events-none z-10">
         <svg
           width="350"
-          height="500"
-          viewBox="0 0 350 500"
+          height="100%"
+          viewBox="0 0 350 1080"
+          preserveAspectRatio="none"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-gray-400"
         >
-          {/* Far mountain */}
-          <path
-            d="M0 280 L70 380 L140 320 L210 400 L280 350 L350 500 L0 500 Z"
-            fill="currentColor"
-            opacity="0.4"
+          {/* Morning sky gradient */}
+          <defs>
+            <linearGradient
+              id="skyGradientRight"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.5" />
+              <stop offset="40%" stopColor="#BFDBFE" stopOpacity="0.4" />
+              <stop offset="70%" stopColor="#DBEAFE" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#F0F9FF" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+
+          {/* Sky background */}
+          <rect
+            x="0"
+            y="0"
+            width="350"
+            height="1080"
+            fill="url(#skyGradientRight)"
           />
-          {/* Near mountain */}
+
+          {/* Bottom mountains */}
           <path
-            d="M0 420 L35 360 L85 450 L140 390 L195 460 L245 420 L295 360 L350 380 L350 500 L0 500 Z"
-            fill="currentColor"
-            opacity="0.6"
+            d="M0 860 L70 960 L140 900 L210 980 L280 930 L350 1080 L0 1080 Z"
+            fill="#9CA3AF"
+            opacity="0.5"
+          />
+          <path
+            d="M0 1000 L35 940 L85 1030 L140 970 L195 1040 L245 1000 L295 940 L350 960 L350 1080 L0 1080 Z"
+            fill="#6B7280"
+            opacity="0.7"
           />
         </svg>
       </div>

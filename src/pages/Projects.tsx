@@ -55,7 +55,7 @@ function Projects({ projects }: ProjectsProps) {
         {projectData.map((project, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300"
+            className="bg-blue-50 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300"
           >
             {project.imageUrl && (
               <img

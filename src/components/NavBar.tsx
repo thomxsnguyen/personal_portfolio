@@ -20,7 +20,7 @@ function NavBar() {
           className={`backdrop-blur-md rounded-full px-5 py-2 transition-all duration-300
             ${
               isScrolled
-                ? "bg-white/95 shadow-lg"
+                ? "bg-blue-50/95 shadow-lg"
                 : "bg-transparent shadow-none"
             }
           `}

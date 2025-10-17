@@ -8,7 +8,7 @@ import SideMountains from "./components/SideMountains";
 
 function App() {
   return (
-    <div id="top" className="bg-gray-50 min-h-screen relative">
+    <div id="top" className="bg-blue-50 min-h-screen relative">
       <SideMountains />
       <SnowParticles
         className="fixed inset-0 pointer-events-none z-50"

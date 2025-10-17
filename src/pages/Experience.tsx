@@ -51,7 +51,7 @@ function Experience({ experiences }: ExperienceProps) {
         {experienceData.map((experience, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-300"
+            className="bg-blue-50 rounded-lg shadow-lg p-6 border-l-4 border-blue-300"
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
               <div>

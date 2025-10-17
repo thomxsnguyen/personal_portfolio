@@ -132,21 +132,21 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                   ? "Medium"
                   : isHard
                   ? "Hard"
-                  : difficultyStr || "",
+                  : "Medium",
                 difficultyColor: isEasy
                   ? "text-green-600"
                   : isMedium
                   ? "text-yellow-600"
                   : isHard
                   ? "text-red-600"
-                  : "text-gray-600",
+                  : "text-yellow-600",
                 bgColor: isEasy
                   ? "bg-green-50"
                   : isMedium
                   ? "bg-yellow-50"
                   : isHard
                   ? "bg-red-50"
-                  : "bg-gray-50",
+                  : "bg-yellow-50",
                 date: Number.isFinite(ts)
                   ? new Date(ts * 1000).toLocaleDateString()
                   : undefined,
@@ -215,7 +215,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         {/* Easy Section */}
-        <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-500">
+        <div className="bg-blue-50 rounded-lg shadow-lg p-6 border-t-4 border-green-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-green-600 mb-2">Easy</h3>
             <div className="text-3xl font-bold text-gray-800">
@@ -242,7 +242,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
           </div>
         </div>
         {/* Medium Section */}
-        <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-yellow-500">
+        <div className="bg-blue-50 rounded-lg shadow-lg p-6 border-t-4 border-yellow-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-yellow-600 mb-2">Medium</h3>
             <div className="text-3xl font-bold text-gray-800">
@@ -269,7 +269,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
           </div>
         </div>
         {/* Hard Section */}
-        <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-red-500">
+        <div className="bg-blue-50 rounded-lg shadow-lg p-6 border-t-4 border-red-500">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-red-600 mb-2">Hard</h3>
             <div className="text-3xl font-bold text-gray-800">
@@ -302,7 +302,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         <h3 className="text-3xl font-bold text-gray-800 text-center mb-8">
           Recent Problems Solved
         </h3>
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-blue-50 rounded-lg shadow-lg p-6">
           {loading && (
             <div className="text-center text-sm text-gray-500">
               Loading recent problems…
