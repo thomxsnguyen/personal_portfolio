@@ -11,11 +11,11 @@ function App() {
     <div id="top" className="bg-blue-50 min-h-screen relative">
       <SideMountains />
       <SnowParticles
-        className="fixed inset-0 pointer-events-none z-50"
+        className="fixed inset-0 pointer-events-none z-5"
         count={150}
       />
       <NavBar />
-      <main className="flex flex-col items-center justify-center">
+      <main className="relative z-10 flex flex-col items-center justify-center">
         <div className="py-10">
           <HomePage name="Thomas Nguyen" />
         </div>

@@ -1,5 +1,6 @@
 // Image will be served from public folder
 const profilePic = "/profilepic.JPG";
+import { useEffect, useRef, useState } from "react";
 import TypeWriter from "../components/TypeWriter";
 
 interface HomePageProps {
@@ -7,10 +8,41 @@ interface HomePageProps {
 }
 
 function HomePage({ name }: HomePageProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "-100px",
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="home"
-      className="flex flex-col items-center pt-56 pb-96 p-6 md:p-40"
+      className={`flex flex-col items-center pt-56 p-6 md:p-40 transition-opacity duration-[2000ms] ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+      style={{ paddingBottom: "60vh" }}
     >
       <div className="flex flex-row items-start gap-x-18 w-full max-w-6xl">
         <div className="flex flex-col gap-y-1">

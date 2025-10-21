@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface LeetCodeProps {
   username?: string;
@@ -17,6 +17,9 @@ type RecentProblem = {
 };
 
 function LeetCode({ username = "your-username" }: LeetCodeProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
   const fallbackProblems: RecentProblem[] = [
     {
       id: 1,
@@ -79,124 +82,216 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
   useEffect(() => {
     if (!username || username === "your-username") return;
 
-    const controller = new AbortController();
+    let isMounted = true;
     const fetchStats = async () => {
       setLoading(true);
       setError(null);
       try {
-        // Public LeetCode stats API (community, CORS enabled)
-        // Example: https://leetcode-api-faisalshohag.vercel.app/thomxsnguyen
+        // Use alfa-leetcode-api with a timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
         const res = await fetch(
-          `https://leetcode-api-faisalshohag.vercel.app/${encodeURIComponent(
+          `https://alfa-leetcode-api.onrender.com/${encodeURIComponent(
             username
           )}`,
           { signal: controller.signal }
         );
-        if (!res.ok)
+
+        clearTimeout(timeoutId);
+
+        if (!res.ok) {
           throw new Error(`Failed to load LeetCode data (${res.status})`);
+        }
+
         const data = await res.json();
 
-        // Counts
-        const easy = data?.easySolved ?? data?.totalEasy ?? null;
-        const medium = data?.mediumSolved ?? data?.totalMedium ?? null;
-        const hard = data?.hardSolved ?? data?.totalHard ?? null;
-        setEasySolved(typeof easy === "number" ? easy : null);
-        setMediumSolved(typeof medium === "number" ? medium : null);
-        setHardSolved(typeof hard === "number" ? hard : null);
+        if (!isMounted) return;
 
-        // Recent submissions
-        const submissions = (data?.recentSubmissions || []) as Array<{
+        console.log("LeetCode API Response:", data);
+
+        // Parse problem counts from leetcode-stats-api
+        const easy = data?.easySolved ?? 0;
+        const medium = data?.mediumSolved ?? 0;
+        const hard = data?.hardSolved ?? 0;
+
+        console.log(
+          "Problem counts - Easy:",
+          easy,
+          "Medium:",
+          medium,
+          "Hard:",
+          hard,
+          "Total:",
+          data?.totalSolved
+        );
+
+        if (!isMounted) return;
+
+        setEasySolved(easy);
+        setMediumSolved(medium);
+        setHardSolved(hard);
+
+        // Recent submissions - use fallback problems if no recent submissions
+        const submissions = (data?.recentSubmissions ||
+          data?.recentAcSubmissionList ||
+          fallbackProblems) as Array<{
           title?: string;
           titleSlug?: string;
           timestamp?: number | string;
           statusDisplay?: string;
           lang?: string;
           difficulty?: string;
+          difficultyColor?: string;
+          bgColor?: string;
+          link?: string;
+          date?: string;
         }>;
 
         if (Array.isArray(submissions) && submissions.length > 0) {
+          // Debug: Log first submission to see structure
+          console.log("First submission:", submissions[0]);
+
           const mapped: RecentProblem[] = submissions
             .slice(0, 200)
-            .map((s, idx) => {
-              const difficultyStr = (s.difficulty || "").toString();
-              const isEasy = /easy/i.test(difficultyStr);
-              const isMedium = /medium/i.test(difficultyStr);
-              const isHard = /hard/i.test(difficultyStr);
-              const ts = Number(s.timestamp);
+            .map((s: any, idx) => {
+              // If already in RecentProblem format (from fallback), return as is
+              if (s.difficultyColor && s.bgColor && s.link) {
+                return s;
+              }
+
+              // Parse difficulty from string
+              let difficulty: "Easy" | "Medium" | "Hard" = "Medium";
+
+              if (s.difficulty) {
+                const difficultyStr = s.difficulty.toString();
+                if (difficultyStr === "Easy") {
+                  difficulty = "Easy";
+                } else if (difficultyStr === "Hard") {
+                  difficulty = "Hard";
+                } else {
+                  difficulty = "Medium";
+                }
+              }
+
+              // Parse timestamp
+              const ts = Number(s.timestamp) || 0;
               return {
-                id: s.titleSlug || idx,
+                id: s.titleSlug || s.id || idx,
                 title: s.title || s.titleSlug || "LeetCode Problem",
-                difficulty: isEasy
-                  ? "Easy"
-                  : isMedium
-                  ? "Medium"
-                  : isHard
-                  ? "Hard"
-                  : "Medium",
-                difficultyColor: isEasy
-                  ? "text-green-600"
-                  : isMedium
-                  ? "text-yellow-600"
-                  : isHard
-                  ? "text-red-600"
-                  : "text-yellow-600",
-                bgColor: isEasy
-                  ? "bg-green-50"
-                  : isMedium
-                  ? "bg-yellow-50"
-                  : isHard
-                  ? "bg-red-50"
-                  : "bg-yellow-50",
+                difficulty: difficulty,
+                difficultyColor:
+                  difficulty === "Easy"
+                    ? "text-green-600"
+                    : difficulty === "Hard"
+                    ? "text-red-600"
+                    : "text-yellow-600",
+                bgColor:
+                  difficulty === "Easy"
+                    ? "bg-green-50"
+                    : difficulty === "Hard"
+                    ? "bg-red-50"
+                    : "bg-yellow-50",
                 date: Number.isFinite(ts)
                   ? new Date(ts * 1000).toLocaleDateString()
-                  : undefined,
-                link: s.titleSlug
-                  ? `https://leetcode.com/problems/${s.titleSlug}/`
-                  : "https://leetcode.com/problemset/",
+                  : s.date,
+                link:
+                  s.link ||
+                  (s.titleSlug
+                    ? `https://leetcode.com/problems/${s.titleSlug}/`
+                    : "https://leetcode.com/problemset/"),
                 _ts: Number.isFinite(ts) ? ts : 0,
               };
             })
             .sort((a, b) => (b._ts ?? 0) - (a._ts ?? 0));
 
-          setRecentProblems(mapped);
+          // Deduplicate problems by titleSlug, keeping only the most recent submission
+          const uniqueProblemsMap = new Map<string, RecentProblem>();
+          mapped.forEach((problem) => {
+            const key = problem.id.toString();
+            if (!uniqueProblemsMap.has(key)) {
+              uniqueProblemsMap.set(key, problem);
+            }
+          });
+          const uniqueProblems = Array.from(uniqueProblemsMap.values());
 
-          // Group and take the top 3 by difficulty
-          const easyTop = mapped
+          if (!isMounted) return;
+
+          setRecentProblems(uniqueProblems);
+
+          // Group and take the top 3 by difficulty from unique problems
+          const easyTop = uniqueProblems
             .filter((p) => p.difficulty === "Easy")
             .slice(0, 3);
-          const mediumTop = mapped
+          const mediumTop = uniqueProblems
             .filter((p) => p.difficulty === "Medium")
             .slice(0, 3);
-          const hardTop = mapped
+          const hardTop = uniqueProblems
             .filter((p) => p.difficulty === "Hard")
             .slice(0, 3);
 
           setEasyRecent(easyTop);
           setMediumRecent(mediumTop);
           setHardRecent(hardTop);
-        } else {
+        } else if (isMounted) {
           setEasyRecent([]);
           setMediumRecent([]);
           setHardRecent([]);
         }
       } catch (e: unknown) {
-        setError(
-          e instanceof Error ? e.message : "Failed to load LeetCode data"
-        );
+        if (isMounted) {
+          setError(
+            e instanceof Error ? e.message : "Failed to load LeetCode data"
+          );
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchStats();
-    return () => controller.abort();
+    return () => {
+      isMounted = false;
+    };
   }, [username]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "-100px",
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const profileUrl = `https://leetcode.com/${username}/`;
 
   return (
-    <section id="leetcode" className="w-full max-w-6xl mx-auto px-6 py-32">
-      <div className="text-center mb-12">
+    <section
+      ref={sectionRef}
+      id="leetcode"
+      className={`w-full max-w-6xl mx-auto px-6 pt-48 pb-32 transition-opacity duration-[2000ms] ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div className="text-center mb-12 flex flex-col items-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">LeetCode</h2>
         <p className="text-xl text-gray-600">
           My coding problem solutions and progress
@@ -229,14 +324,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                 Recent Solutions
               </p>
               <p className="text-xs text-green-600">
-                {(easyRecent.length > 0
-                  ? easyRecent
-                  : recentProblems
-                      .filter((p) => p.difficulty === "Easy")
-                      .slice(0, 3)
-                )
-                  .map((p) => p.title)
-                  .join(", ") || "—"}
+                {easyRecent.map((p) => p.title).join(", ") || "—"}
               </p>
             </div>
           </div>
@@ -256,14 +344,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                 Recent Solutions
               </p>
               <p className="text-xs text-yellow-600">
-                {(mediumRecent.length > 0
-                  ? mediumRecent
-                  : recentProblems
-                      .filter((p) => p.difficulty === "Medium")
-                      .slice(0, 3)
-                )
-                  .map((p) => p.title)
-                  .join(", ") || "—"}
+                {mediumRecent.map((p) => p.title).join(", ") || "—"}
               </p>
             </div>
           </div>
@@ -283,14 +364,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                 Recent Solutions
               </p>
               <p className="text-xs text-red-600">
-                {(hardRecent.length > 0
-                  ? hardRecent
-                  : recentProblems
-                      .filter((p) => p.difficulty === "Hard")
-                      .slice(0, 3)
-                )
-                  .map((p) => p.title)
-                  .join(", ") || "—"}
+                {hardRecent.map((p) => p.title).join(", ") || "—"}
               </p>
             </div>
           </div>
@@ -298,8 +372,8 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
       </div>
 
       {/* Recent Problems Section */}
-      <div className="mt-16">
-        <h3 className="text-3xl font-bold text-gray-800 text-center mb-8">
+      <div className="mt-16 text-center">
+        <h3 className="text-3xl font-bold text-gray-800 mb-8">
           Recent Problems Solved
         </h3>
         <div className="bg-blue-50 rounded-lg shadow-lg p-6">

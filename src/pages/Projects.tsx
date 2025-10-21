@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import MoreProjectsButton from "../components/MoreProjectsButton";
 
 interface ProjectItem {
@@ -14,13 +15,48 @@ interface ProjectsProps {
 }
 
 function Projects({ projects }: ProjectsProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "-100px",
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const defaultProjects: ProjectItem[] = [
     {
       title: "ArtistShuffler",
       description:
         "Full-stack web application using Python and Flask to interact with Spotify's API, enabling music playback from selected artists. Features real-time updates and asynchronous API interactions for seamless user experience.",
-      technologies: ["Python", "Flask", "HTML", "JavaScript", "Spotify API"],
-      githubLink: "https://github.com/thomxsnguyen/ArtistShuffler",
+      technologies: [
+        "React",
+        "TypeScript",
+        "Flask",
+        "Tailwind CSS",
+        "Vite",
+        "Spotify API",
+      ],
+      githubLink: "https://github.com/thomxsnguyen/ArtistBlender",
+      imageUrl: "/artistblender.png",
     },
     {
       title: "FEM Prediction Model",
@@ -28,13 +64,26 @@ function Projects({ projects }: ProjectsProps) {
         "Developed GRU, LSTM, RNN, and RBF-RNN models using PyTorch to forecast thermal energy storage dynamics. Achieved sub-second inference times, outperforming traditional simulations by ~600x. Engineered custom dataset preprocessing and implemented teacher forcing for improved accuracy.",
       technologies: ["Python", "PyTorch", "GRU", "LSTM", "RNN", "RBF-RNN"],
       githubLink: "https://github.com/thomxsnguyen/R199",
+      imageUrl: "/R199.png",
     },
     {
-      title: "Car Prediction Model",
-      description:
-        "Built a neural network using TensorFlow and Keras to predict car purchase decisions from synthetic customer data. Implemented data preprocessing, scaling, and train-test split with Sequential Dense layers.",
-      technologies: ["Python", "TensorFlow", "Keras", "Data Preprocessing"],
-      githubLink: "https://github.com/thomxsnguyen/car-sales-prediction",
+      title: "RouteCrafter",
+      description: "Currently Under Development..",
+      technologies: [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Docker",
+        "AWS",
+        "Redis",
+      ],
+      githubLink: "https://github.com/thomxsnguyen/RouteCrafter",
+    },
+    {
+      title: "Context Bandit Dashboard",
+      description: "Under Development.",
+      technologies: [],
+      githubLink: "https://github.com/thomxsnguyen/ContextBanditDashboard",
     },
   ];
 
@@ -42,10 +91,13 @@ function Projects({ projects }: ProjectsProps) {
 
   return (
     <section
+      ref={sectionRef}
       id="projects"
-      className="w-full max-w-6xl mx-auto px-6 pt-32 pb-96"
+      className={`w-full max-w-6xl mx-auto px-6 pt-32 pb-96 transition-opacity duration-[2000ms] ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
     >
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 flex flex-col items-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Projects</h2>
         <p className="text-xl text-gray-600">
           A showcase of my work and technical skills
@@ -55,14 +107,16 @@ function Projects({ projects }: ProjectsProps) {
         {projectData.map((project, index) => (
           <div
             key={index}
-            className="bg-blue-50 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300"
+            className="bg-white border-2 border-blue-200 rounded-lg shadow-xl overflow-hidden hover:scale-105 hover:shadow-2xl transition-all duration-300"
           >
             {project.imageUrl && (
-              <img
-                src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
+              <div className="w-full h-64 bg-gray-100 flex items-center justify-center p-4">
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
             )}
             <div className="p-6">
               <h3 className="text-xl font-bold text-gray-800 mb-3">
