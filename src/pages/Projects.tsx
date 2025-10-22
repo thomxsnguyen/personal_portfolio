@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import MoreProjectsButton from "../components/MoreProjectsButton";
 
 interface ProjectItem {
@@ -15,32 +15,7 @@ interface ProjectsProps {
 }
 
 function Projects({ projects }: ProjectsProps) {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px",
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   const defaultProjects: ProjectItem[] = [
     {
@@ -94,9 +69,7 @@ function Projects({ projects }: ProjectsProps) {
     <section
       ref={sectionRef}
       id="projects"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-32 md:pb-96 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
+      className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-8 md:pt-32 pb-32 md:pb-96 overflow-x-hidden"
     >
       <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
         <h2
