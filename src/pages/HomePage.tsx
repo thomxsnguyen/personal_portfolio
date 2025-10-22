@@ -92,33 +92,6 @@ function HomePage({ name }: HomePageProps) {
           className="w-54 h-54 rounded-full object-cover shadow-lg object-center brightness-110"
         />
       </div>
-
-      {/* Currently Working Section */}
-      <div className="w-full max-w-6xl mt-8 px-2">
-        <h3 className="text-lg font-semibold text-gray-800 mb-3">
-          Currently Working
-        </h3>
-        <div className="space-y-2">
-          <div className="text-sm text-gray-600">
-            <span className="font-medium">Software Engineer Intern</span> @{" "}
-            <span className="text-gray-700">Sportstake</span>
-          </div>
-          <div className="text-sm text-gray-600">
-            <span className="font-medium">
-              Software Developer Research Assistant
-            </span>{" "}
-            @ <span className="text-gray-700">dapLab</span>
-          </div>
-          <div className="text-sm text-gray-600">
-            <span className="font-medium">Machine Research Assistant</span> @{" "}
-            <span className="text-gray-700">Calit2</span>
-          </div>
-          <div className="text-sm text-gray-600">
-            <span className="font-medium">Software Developer</span> @{" "}
-            <span className="text-gray-700">BRSS</span>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

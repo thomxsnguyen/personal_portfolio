@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
 import Projects from "./pages/Projects";
 import LeetCode from "./pages/LeetCode";
+import Experience from "./pages/Experience";
 import SnowParticles from "./components/SnowParticles";
 import SideMountains from "./components/SideMountains";
 
@@ -19,6 +20,7 @@ function App() {
         <div className="py-10">
           <HomePage name="Thomas Nguyen" />
         </div>
+        <Experience />
         <Projects />
         <LeetCode username="thomasn8255" />
       </main>

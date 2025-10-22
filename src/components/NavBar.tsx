@@ -13,6 +13,23 @@ function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      const offsetTop =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      const offset = 100; // Adjust this value to scroll more or less
+      window.scrollTo({
+        top: offsetTop - offset,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <nav className="w-full flex justify-center pt-3 sticky top-0 z-50 transition-all duration-300">
       <div className="w-full max-w-4xl mx-auto px-4">
@@ -29,6 +46,7 @@ function NavBar() {
             <div className="flex items-center space-x-4">
               <a
                 href="#top"
+                onClick={(e) => handleSmoothScroll(e, "#top")}
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
@@ -36,7 +54,17 @@ function NavBar() {
                 Home
               </a>
               <a
+                href="#experience"
+                onClick={(e) => handleSmoothScroll(e, "#experience")}
+                className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
+                  isScrolled ? "text-blue-400" : "text-blue-300"
+                }`}
+              >
+                Experience
+              </a>
+              <a
                 href="#projects"
+                onClick={(e) => handleSmoothScroll(e, "#projects")}
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
@@ -45,6 +73,7 @@ function NavBar() {
               </a>
               <a
                 href="#leetcode"
+                onClick={(e) => handleSmoothScroll(e, "#leetcode")}
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
