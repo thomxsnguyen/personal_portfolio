@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import TypeWriter from "../components/TypeWriter";
-import profilePic from "../assets/profilePic.png";
+import profilePic from "../assets/profilePic2.png";
 
 interface HomePageProps {
   name: string;
@@ -102,7 +102,7 @@ function HomePage({ name }: HomePageProps) {
           {/* Right side - Profile Picture and Introduction */}
           <div className="flex-1 mt-8 md:mt-16 w-full">
             <div
-              className="rounded-lg shadow-xl p-4 md:p-6 border-2 border-blue-200 max-w-md mx-auto md:mx-0"
+              className="rounded-lg shadow-xl p-4 md:p-6 border-2 border-blue-200 max-w-sm mx-auto md:mx-0"
               style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
             >
               <div className="flex flex-col gap-4 md:gap-6 items-center">
@@ -115,16 +115,10 @@ function HomePage({ name }: HomePageProps) {
                   Computer Science undergraduate at UC Irvine specializing in
                   software engineering, machine learning systems, and
                   distributed cloud architectures. Experienced in developing
-                  scalable full-stack applications utilizing modern frameworks
-                  including React, Node.js, and Flutter, with backend
-                  infrastructure deployed on AWS using Docker containerization
-                  and CI/CD pipelines. Technical expertise spans from
-                  implementing RESTful APIs and optimizing database queries to
-                  architecting PyTorch models for real-time inference. Currently
-                  conducting undergraduate research in computational cognitive
-                  neuroscience and machine learning, focusing on neural network
-                  optimization and data pipeline development for FEM simulation
-                  datasets.
+                  scalable full-stack applications with React, Node.js, and
+                  Flutter. Technical expertise spans implementing RESTful APIs,
+                  optimizing database queries, and architecting PyTorch models
+                  for real-time inference.
                 </p>
               </div>
             </div>

@@ -141,7 +141,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
     <section
       ref={sectionRef}
       id="leetcode"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-24 md:pt-48 pb-16 md:pb-32 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-16 md:pb-32 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -159,7 +159,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
           My coding problem solutions and progress
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+      <div className="max-w-md mx-auto space-y-4">
         {/* Easy Section */}
         <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 border-2 border-blue-200">
           <div className="text-center">
@@ -198,7 +198,19 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         </div>
       </div>
 
-      <div className="text-center mt-8 flex flex-col items-center">
+      {/* Solution Explanation Coming Soon */}
+      <div className="max-w-md mx-auto mt-6">
+        <div className="bg-blue-50 rounded-lg shadow-md p-4 border-2 border-blue-200">
+          <div className="text-center">
+            <h3 className="text-lg md:text-xl font-semibold text-blue-400 mb-2">
+              Solution Explanations
+            </h3>
+            <p className="text-sm text-gray-600">Coming Soon</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center mt-6 flex flex-col items-center">
         <a
           href={profileUrl}
           target="_blank"
