@@ -16,57 +16,57 @@ type RecentProblem = {
   _ts?: number;
 };
 
+const fallbackProblems: RecentProblem[] = [
+  {
+    id: 1,
+    title: "Two Sum",
+    difficulty: "Easy",
+    difficultyColor: "text-green-600",
+    bgColor: "bg-green-50",
+    date: "2 days ago",
+    link: "https://leetcode.com/problems/two-sum/",
+  },
+  {
+    id: 2,
+    title: "Add Two Numbers",
+    difficulty: "Medium",
+    difficultyColor: "text-yellow-600",
+    bgColor: "bg-yellow-50",
+    date: "3 days ago",
+    link: "https://leetcode.com/problems/add-two-numbers/",
+  },
+  {
+    id: 3,
+    title: "Longest Substring Without Repeating Characters",
+    difficulty: "Medium",
+    difficultyColor: "text-yellow-600",
+    bgColor: "bg-yellow-50",
+    date: "5 days ago",
+    link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+  },
+  {
+    id: 4,
+    title: "Valid Parentheses",
+    difficulty: "Easy",
+    difficultyColor: "text-green-600",
+    bgColor: "bg-green-50",
+    date: "1 week ago",
+    link: "https://leetcode.com/problems/valid-parentheses/",
+  },
+  {
+    id: 5,
+    title: "Merge k Sorted Lists",
+    difficulty: "Hard",
+    difficultyColor: "text-red-600",
+    bgColor: "bg-red-50",
+    date: "1 week ago",
+    link: "https://leetcode.com/problems/merge-k-sorted-lists/",
+  },
+];
+
 function LeetCode({ username = "your-username" }: LeetCodeProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  const fallbackProblems: RecentProblem[] = [
-    {
-      id: 1,
-      title: "Two Sum",
-      difficulty: "Easy",
-      difficultyColor: "text-green-600",
-      bgColor: "bg-green-50",
-      date: "2 days ago",
-      link: "https://leetcode.com/problems/two-sum/",
-    },
-    {
-      id: 2,
-      title: "Add Two Numbers",
-      difficulty: "Medium",
-      difficultyColor: "text-yellow-600",
-      bgColor: "bg-yellow-50",
-      date: "3 days ago",
-      link: "https://leetcode.com/problems/add-two-numbers/",
-    },
-    {
-      id: 3,
-      title: "Longest Substring Without Repeating Characters",
-      difficulty: "Medium",
-      difficultyColor: "text-yellow-600",
-      bgColor: "bg-yellow-50",
-      date: "5 days ago",
-      link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
-    },
-    {
-      id: 4,
-      title: "Valid Parentheses",
-      difficulty: "Easy",
-      difficultyColor: "text-green-600",
-      bgColor: "bg-green-50",
-      date: "1 week ago",
-      link: "https://leetcode.com/problems/valid-parentheses/",
-    },
-    {
-      id: 5,
-      title: "Merge k Sorted Lists",
-      difficulty: "Hard",
-      difficultyColor: "text-red-600",
-      bgColor: "bg-red-50",
-      date: "1 week ago",
-      link: "https://leetcode.com/problems/merge-k-sorted-lists/",
-    },
-  ];
 
   const [easySolved, setEasySolved] = useState<number | null>(null);
   const [mediumSolved, setMediumSolved] = useState<number | null>(null);
@@ -80,7 +80,11 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!username || username === "your-username") return;
+    if (!username || username === "your-username") {
+      // Set fallback data when no username
+      setRecentProblems(fallbackProblems);
+      return;
+    }
 
     let isMounted = true;
     const fetchStats = async () => {
@@ -89,10 +93,10 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
       try {
         // Use alfa-leetcode-api with a timeout
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
 
         const res = await fetch(
-          `https://alfa-leetcode-api.onrender.com/${encodeURIComponent(
+          `https://alfa-leetcode-api.onrender.com/userProfile/${encodeURIComponent(
             username
           )}`,
           { signal: controller.signal }
@@ -110,10 +114,19 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
 
         console.log("LeetCode API Response:", data);
 
-        // Parse problem counts from leetcode-stats-api
-        const easy = data?.easySolved ?? 0;
-        const medium = data?.mediumSolved ?? 0;
-        const hard = data?.hardSolved ?? 0;
+        // Parse problem counts from alfa-leetcode-api
+        const easy =
+          data?.easySolved ??
+          data?.submitStatsGlobal?.acSubmissionNum?.[1]?.count ??
+          0;
+        const medium =
+          data?.mediumSolved ??
+          data?.submitStatsGlobal?.acSubmissionNum?.[2]?.count ??
+          0;
+        const hard =
+          data?.hardSolved ??
+          data?.submitStatsGlobal?.acSubmissionNum?.[3]?.count ??
+          0;
 
         console.log(
           "Problem counts - Easy:",
@@ -132,49 +145,98 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         setMediumSolved(medium);
         setHardSolved(hard);
 
-        // Recent submissions - use fallback problems if no recent submissions
-        const submissions = (data?.recentSubmissions ||
-          data?.recentAcSubmissionList ||
-          fallbackProblems) as Array<{
+        // Check if recentSubmissions has difficulty data embedded
+        console.log(
+          "Recent submissions in main data:",
+          data?.recentSubmissions?.slice(0, 2)
+        );
+        console.log(
+          "Recent AC submissions:",
+          data?.recentAcSubmissionList?.slice(0, 2)
+        );
+
+        // If we got problems with difficulty, use them; otherwise use original submissions
+        let submissions =
+          data?.recentSubmissions || data?.recentAcSubmissionList || [];
+
+        if (!Array.isArray(submissions) || submissions.length === 0) {
+          submissions = fallbackProblems;
+        }
+
+        const submissionsArray = submissions as Array<{
           title?: string;
           titleSlug?: string;
           timestamp?: number | string;
           statusDisplay?: string;
           lang?: string;
           difficulty?: string;
-          difficultyColor?: string;
-          bgColor?: string;
-          link?: string;
-          date?: string;
         }>;
 
-        if (Array.isArray(submissions) && submissions.length > 0) {
-          // Debug: Log first submission to see structure
-          console.log("First submission:", submissions[0]);
+        let mapped: RecentProblem[] = [];
 
-          const mapped: RecentProblem[] = submissions
-            .slice(0, 200)
-            .map((s: any, idx) => {
+        if (Array.isArray(submissionsArray) && submissionsArray.length > 0) {
+          // Parse from submissions and fetch difficulty for each
+          console.log("First submission:", submissionsArray[0]);
+
+          // Fetch difficulties in parallel for better performance
+          mapped = await Promise.all(
+            submissionsArray.slice(0, 50).map(async (s: any, idx) => {
               // If already in RecentProblem format (from fallback), return as is
               if (s.difficultyColor && s.bgColor && s.link) {
                 return s;
               }
 
-              // Parse difficulty from string
               let difficulty: "Easy" | "Medium" | "Hard" = "Medium";
+              const titleSlug =
+                s.titleSlug || s.title?.toLowerCase().replace(/\s+/g, "-");
 
-              if (s.difficulty) {
-                const difficultyStr = s.difficulty.toString();
-                if (difficultyStr === "Easy") {
-                  difficulty = "Easy";
-                } else if (difficultyStr === "Hard") {
-                  difficulty = "Hard";
-                } else {
-                  difficulty = "Medium";
+              // Try to fetch difficulty from the problem detail API
+              if (titleSlug) {
+                try {
+                  const problemRes = await fetch(
+                    `https://alfa-leetcode-api.onrender.com/${titleSlug}`
+                  );
+                  console.log(`Fetching difficulty for: ${titleSlug}`);
+
+                  if (problemRes.ok) {
+                    const problemData = await problemRes.json();
+                    console.log(`Response for ${titleSlug}:`, problemData);
+
+                    if (problemData?.difficulty) {
+                      const diffStr = problemData.difficulty.toLowerCase();
+                      if (diffStr === "easy") {
+                        difficulty = "Easy";
+                      } else if (diffStr === "hard") {
+                        difficulty = "Hard";
+                      } else {
+                        difficulty = "Medium";
+                      }
+                      console.log(`✅ ${titleSlug}: ${difficulty}`);
+                    } else {
+                      console.log(
+                        `❌ No difficulty in response for ${titleSlug}`
+                      );
+                    }
+                  } else {
+                    console.log(
+                      `❌ API call failed for ${titleSlug}: ${problemRes.status}`
+                    );
+                  }
+                } catch (e) {
+                  console.log(`❌ Error fetching ${titleSlug}:`, e);
                 }
               }
 
-              // Parse timestamp
+              // Fallback: check if difficulty is in the submission object
+              if (difficulty === "Medium" && s.difficulty) {
+                const difficultyStr = s.difficulty.toString().toLowerCase();
+                if (difficultyStr === "easy") {
+                  difficulty = "Easy";
+                } else if (difficultyStr === "hard") {
+                  difficulty = "Hard";
+                }
+              }
+
               const ts = Number(s.timestamp) || 0;
               return {
                 id: s.titleSlug || s.id || idx,
@@ -203,41 +265,39 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                 _ts: Number.isFinite(ts) ? ts : 0,
               };
             })
-            .sort((a, b) => (b._ts ?? 0) - (a._ts ?? 0));
-
-          // Deduplicate problems by titleSlug, keeping only the most recent submission
-          const uniqueProblemsMap = new Map<string, RecentProblem>();
-          mapped.forEach((problem) => {
-            const key = problem.id.toString();
-            if (!uniqueProblemsMap.has(key)) {
-              uniqueProblemsMap.set(key, problem);
-            }
-          });
-          const uniqueProblems = Array.from(uniqueProblemsMap.values());
-
-          if (!isMounted) return;
-
-          setRecentProblems(uniqueProblems);
-
-          // Group and take the top 3 by difficulty from unique problems
-          const easyTop = uniqueProblems
-            .filter((p) => p.difficulty === "Easy")
-            .slice(0, 3);
-          const mediumTop = uniqueProblems
-            .filter((p) => p.difficulty === "Medium")
-            .slice(0, 3);
-          const hardTop = uniqueProblems
-            .filter((p) => p.difficulty === "Hard")
-            .slice(0, 3);
-
-          setEasyRecent(easyTop);
-          setMediumRecent(mediumTop);
-          setHardRecent(hardTop);
-        } else if (isMounted) {
-          setEasyRecent([]);
-          setMediumRecent([]);
-          setHardRecent([]);
+          );
         }
+
+        const sorted = mapped.sort((a, b) => (b._ts ?? 0) - (a._ts ?? 0));
+
+        // Deduplicate problems by titleSlug, keeping only the most recent submission
+        const uniqueProblemsMap = new Map<string, RecentProblem>();
+        sorted.forEach((problem) => {
+          const key = problem.id.toString();
+          if (!uniqueProblemsMap.has(key)) {
+            uniqueProblemsMap.set(key, problem);
+          }
+        });
+        const uniqueProblems = Array.from(uniqueProblemsMap.values());
+
+        if (!isMounted) return;
+
+        setRecentProblems(uniqueProblems);
+
+        // Group and take the top 3 by difficulty from unique problems
+        const easyTop = uniqueProblems
+          .filter((p) => p.difficulty === "Easy")
+          .slice(0, 3);
+        const mediumTop = uniqueProblems
+          .filter((p) => p.difficulty === "Medium")
+          .slice(0, 3);
+        const hardTop = uniqueProblems
+          .filter((p) => p.difficulty === "Hard")
+          .slice(0, 3);
+
+        setEasyRecent(easyTop);
+        setMediumRecent(mediumTop);
+        setHardRecent(hardTop);
       } catch (e: unknown) {
         if (isMounted) {
           setError(
@@ -400,18 +460,13 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
                   >
                     {problem.title}
                   </a>
-                  <div className="flex items-center space-x-3 mt-2">
-                    <span
-                      className={`px-3 py-1 rounded-full text-sm font-medium ${problem.bgColor} ${problem.difficultyColor}`}
-                    >
-                      {problem.difficulty}
-                    </span>
-                    {problem.date && (
+                  {problem.date && (
+                    <div className="mt-2">
                       <span className="text-sm text-gray-500">
                         {problem.date}
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
                 <div className="ml-4">
                   <svg

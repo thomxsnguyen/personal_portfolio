@@ -1,7 +1,6 @@
-// Image will be served from public folder
-const profilePic = "/profilepic.JPG";
 import { useEffect, useRef, useState } from "react";
 import TypeWriter from "../components/TypeWriter";
+import profilePic from "../assets/profilePic.png";
 
 interface HomePageProps {
   name: string;
@@ -90,7 +89,7 @@ function HomePage({ name }: HomePageProps) {
         <img
           src={profilePic}
           alt="profilepic"
-          className="w-54 h-54 rounded-full object-cover shadow-lg -mt-8"
+          className="w-54 h-54 rounded-full object-cover shadow-lg object-center brightness-110"
         />
       </div>
 
