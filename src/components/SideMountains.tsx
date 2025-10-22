@@ -1,8 +1,8 @@
 function SideMountains() {
   return (
     <>
-      {/* Left side mountain with morning sky - FULL HEIGHT */}
-      <div className="fixed left-0 top-0 h-screen pointer-events-none z-0 drop-shadow-lg">
+      {/* Left side mountain with morning sky - FULL HEIGHT - Hidden on mobile */}
+      <div className="hidden md:block fixed left-0 top-0 h-screen pointer-events-none z-0 drop-shadow-lg">
         <svg
           width="350"
           height="100%"
@@ -93,8 +93,8 @@ function SideMountains() {
         </svg>
       </div>
 
-      {/* Right side mountain with morning sky - FULL HEIGHT */}
-      <div className="fixed right-0 top-0 h-screen pointer-events-none z-0 drop-shadow-lg">
+      {/* Right side mountain with morning sky - FULL HEIGHT - Hidden on mobile */}
+      <div className="hidden md:block fixed right-0 top-0 h-screen pointer-events-none z-0 drop-shadow-lg">
         <svg
           width="350"
           height="100%"

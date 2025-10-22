@@ -38,25 +38,22 @@ function HomePage({ name }: HomePageProps) {
     <section
       ref={sectionRef}
       id="home"
-      className={`flex flex-col items-start pt-32 p-6 md:pl-20 transition-opacity duration-[2000ms] ease-out ${
+      className={`flex flex-col items-start pt-16 md:pt-32 p-4 md:p-6 md:pl-20 transition-opacity duration-[2000ms] ease-out ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
-      style={{ paddingBottom: "60vh" }}
+      style={{ paddingBottom: "20vh" }}
     >
-      <div className="w-full max-w-7xl px-8">
-        <div
-          className="flex flex-col md:flex-row gap-38 items-start"
-          style={{ gap: "9.5rem" }}
-        >
+      <div className="w-full max-w-7xl px-4 md:px-8">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 items-start md:items-start">
           {/* Left side - Title and Links */}
-          <div className="flex flex-col items-start gap-y-8 flex-shrink-0 mt-24">
+          <div className="flex flex-col items-start gap-y-4 md:gap-y-8 flex-shrink-0 mt-8 md:mt-24 w-full md:w-auto">
             <TypeWriter
               texts={[name, "Computer Science Student at UCI"]}
               speeds={[50, 40]}
               delays={[500, 300]}
               cursor={true}
             />
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-4 md:space-x-6">
               <a
                 href="https://github.com/thomxsnguyen"
                 target="_blank"
@@ -65,7 +62,7 @@ function HomePage({ name }: HomePageProps) {
                 className="text-blue-300 hover:scale-125 transition-transform duration-300 p-1"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-6 h-6 md:w-8 md:h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -80,7 +77,7 @@ function HomePage({ name }: HomePageProps) {
                 className="text-blue-300 hover:scale-125 transition-transform duration-300 p-1"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-6 h-6 md:w-8 md:h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -93,7 +90,7 @@ function HomePage({ name }: HomePageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="CV"
-                className="text-blue-300 hover:scale-110 transition-transform duration-300 p-1 text-2xl font-bold"
+                className="text-blue-300 hover:scale-110 transition-transform duration-300 p-1 text-xl md:text-2xl font-bold"
               >
                 CV
               </a>
@@ -101,18 +98,18 @@ function HomePage({ name }: HomePageProps) {
           </div>
 
           {/* Right side - Profile Picture and Introduction */}
-          <div className="flex-1 mt-16">
+          <div className="flex-1 mt-8 md:mt-16 w-full">
             <div
-              className="rounded-lg shadow-xl p-6 border-2 border-blue-200 max-w-md"
+              className="rounded-lg shadow-xl p-4 md:p-6 border-2 border-blue-200 max-w-md mx-auto md:mx-0"
               style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
             >
-              <div className="flex flex-col gap-6 items-center">
+              <div className="flex flex-col gap-4 md:gap-6 items-center">
                 <img
                   src={profilePic}
                   alt="profilepic"
-                  className="w-32 h-32 rounded-lg object-cover shadow-md object-center brightness-110 flex-shrink-0"
+                  className="w-32 h-32 md:w-48 md:h-48 rounded-lg object-cover shadow-md object-center brightness-110 flex-shrink-0"
                 />
-                <p className="text-gray-500 leading-relaxed text-xs">
+                <p className="text-gray-500 leading-relaxed text-xs md:text-sm">
                   Computer Science undergraduate at UC Irvine specializing in
                   software engineering, machine learning systems, and
                   distributed cloud architectures. Experienced in developing

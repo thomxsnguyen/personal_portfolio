@@ -71,17 +71,17 @@ function Experience({ experiences }: ExperienceProps) {
   return (
     <section
       id="experience"
-      className="w-full max-w-6xl mx-auto px-6 pt-8 pb-16"
+      className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-8 pb-16"
     >
-      <div className="text-center mb-16">
+      <div className="text-center mb-12 md:mb-16">
         <h2
-          className="text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
+          className="text-4xl md:text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
           style={{ fontFamily: "'Dancing Script', cursive" }}
         >
           Experience
         </h2>
         <p
-          className="text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
+          className="text-lg md:text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
           style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
         >
           My professional journey and accomplishments
@@ -89,23 +89,61 @@ function Experience({ experiences }: ExperienceProps) {
       </div>
 
       {/* Timeline Container */}
-      <div className="relative max-w-4xl mx-auto py-8">
+      <div className="relative max-w-4xl mx-auto py-4 md:py-8">
         {/* Timeline Items */}
         {experienceData.map((experience, index) => (
-          <div key={index} className="relative mb-16">
-            {/* Timeline Line Segment (except for last item) */}
+          <div key={index} className="relative mb-12 md:mb-16">
+            {/* Timeline Line Segment (except for last item) - Desktop only */}
             {index < experienceData.length - 1 && (
-              <div className="absolute left-1/2 top-4 transform -translate-x-1/2 w-0.5 h-full bg-blue-400 z-0"></div>
+              <div className="hidden md:block absolute left-1/2 top-4 transform -translate-x-1/2 w-0.5 h-full bg-blue-400 z-0"></div>
             )}
 
-            <div className="flex items-start relative">
+            {/* Mobile: Single column view */}
+            <div className="md:hidden w-full">
+              <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-4 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                {experience.image ? (
+                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                    <img
+                      src={experience.image}
+                      alt={experience.company}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-full h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg mb-4 flex items-center justify-center">
+                    <span className="text-gray-400 text-xs">{experience.company}</span>
+                  </div>
+                )}
+                <h3 className="text-lg font-bold text-gray-500 mb-2">{experience.position}</h3>
+                <p className="text-xl text-blue-400 mb-3" style={{ fontFamily: "'Dancing Script', cursive" }}>
+                  @ {experience.company}
+                </p>
+                <div className="flex items-center text-sm text-gray-500 mb-4">
+                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  {experience.duration}
+                </div>
+                <ul className="space-y-2">
+                  {experience.description.map((item, itemIndex) => (
+                    <li key={itemIndex} className="text-gray-700 text-sm flex items-start">
+                      <span className="text-blue-400 mr-2 mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Desktop: Timeline view */}
+            <div className="hidden md:flex items-start relative w-full">
               {/* Left Side Content (for even indices) */}
               <div className={`w-1/2 ${index % 2 === 0 ? "pr-8" : ""}`}>
                 {index % 2 === 0 && (
-                  <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                  <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-4 md:p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
                     {/* Image Placeholder */}
                     {experience.image ? (
-                      <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                      <div className="w-full h-32 md:h-40 bg-gray-100 rounded-lg mb-4 overflow-hidden">
                         <img
                           src={experience.image}
                           alt={experience.company}
@@ -160,8 +198,8 @@ function Experience({ experiences }: ExperienceProps) {
                 )}
               </div>
 
-              {/* Timeline Dot with Year */}
-              <div className="absolute left-1/2 top-20 transform -translate-x-1/2 flex items-center z-10">
+              {/* Timeline Dot with Year - Desktop only */}
+              <div className="hidden md:flex absolute left-1/2 top-20 transform -translate-x-1/2 items-center z-10">
                 <div className="w-4 h-4 bg-blue-400 rounded-full border-4 border-white shadow-lg"></div>
                 <div
                   className={`absolute bg-blue-400 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap ${
@@ -175,10 +213,10 @@ function Experience({ experiences }: ExperienceProps) {
               {/* Right Side Content (for odd indices) */}
               <div className={`w-1/2 ${index % 2 === 1 ? "pl-8" : ""}`}>
                 {index % 2 === 1 && (
-                  <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                  <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-4 md:p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
                     {/* Image Placeholder */}
                     {experience.image ? (
-                      <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                      <div className="w-full h-32 md:h-40 bg-gray-100 rounded-lg mb-4 overflow-hidden">
                         <img
                           src={experience.image}
                           alt={experience.company}

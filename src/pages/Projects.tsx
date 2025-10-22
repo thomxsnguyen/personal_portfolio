@@ -94,32 +94,32 @@ function Projects({ projects }: ProjectsProps) {
     <section
       ref={sectionRef}
       id="projects"
-      className={`w-full max-w-6xl mx-auto px-6 pt-32 pb-96 transition-opacity duration-[2000ms] ease-out ${
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-48 md:pb-96 transition-opacity duration-[2000ms] ease-out ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-center mb-12 flex flex-col items-center">
+      <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
         <h2
-          className="text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
+          className="text-4xl md:text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
           style={{ fontFamily: "'Dancing Script', cursive" }}
         >
           Projects
         </h2>
         <p
-          className="text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
+          className="text-lg md:text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
           style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
         >
           A showcase of my work and technical skills
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {projectData.map((project, index) => (
           <div
             key={index}
             className="bg-white border-2 border-blue-200 rounded-lg shadow-xl overflow-hidden hover:scale-105 hover:shadow-2xl transition-all duration-300"
           >
             {project.imageUrl && (
-              <div className="w-full h-64 bg-gray-100 flex items-center justify-center p-4">
+              <div className="w-full h-48 md:h-64 bg-gray-100 flex items-center justify-center p-3 md:p-4">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
@@ -127,11 +127,11 @@ function Projects({ projects }: ProjectsProps) {
                 />
               </div>
             )}
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-500 mb-3">
+            <div className="p-4 md:p-6">
+              <h3 className="text-lg md:text-xl font-bold text-gray-500 mb-3">
                 {project.title}
               </h3>
-              <p className="text-gray-500 mb-4 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-500 mb-4 leading-relaxed">
                 {project.description}
               </p>
               <div className="mb-4">

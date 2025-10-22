@@ -31,10 +31,10 @@ function NavBar() {
   };
 
   return (
-    <nav className="w-full flex justify-center pt-3 sticky top-0 z-50 transition-all duration-300">
-      <div className="w-full max-w-4xl mx-auto px-4">
+    <nav className="w-full flex justify-center pt-2 md:pt-3 sticky top-0 z-50 transition-all duration-300">
+      <div className="w-full max-w-4xl mx-auto px-2 md:px-4">
         <div
-          className={`backdrop-blur-md rounded-full px-5 py-2 transition-all duration-300
+          className={`backdrop-blur-md rounded-full px-3 md:px-5 py-1.5 md:py-2 transition-all duration-300
             ${
               isScrolled
                 ? "bg-blue-50/95 shadow-lg"
@@ -42,12 +42,12 @@ function NavBar() {
             }
           `}
         >
-          <div className="flex items-center justify-between h-10">
-            <div className="flex items-center space-x-4">
+          <div className="flex items-center justify-between h-8 md:h-10">
+            <div className="flex items-center space-x-2 md:space-x-4">
               <a
                 href="#top"
                 onClick={(e) => handleSmoothScroll(e, "#top")}
-                className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
+                className={`px-2 md:px-3 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
                 style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
@@ -57,7 +57,7 @@ function NavBar() {
               <a
                 href="#experience"
                 onClick={(e) => handleSmoothScroll(e, "#experience")}
-                className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
+                className={`px-2 md:px-3 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
                 style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
@@ -67,7 +67,7 @@ function NavBar() {
               <a
                 href="#projects"
                 onClick={(e) => handleSmoothScroll(e, "#projects")}
-                className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
+                className={`px-2 md:px-3 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
                 style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
@@ -77,7 +77,7 @@ function NavBar() {
               <a
                 href="#leetcode"
                 onClick={(e) => handleSmoothScroll(e, "#leetcode")}
-                className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
+                className={`px-2 md:px-3 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
                 style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
@@ -87,7 +87,7 @@ function NavBar() {
               <a
                 href="#contact"
                 onClick={(e) => handleSmoothScroll(e, "#contact")}
-                className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
+                className={`px-2 md:px-3 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
                 style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
