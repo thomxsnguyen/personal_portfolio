@@ -26,8 +26,8 @@ function Projects({ projects }: ProjectsProps) {
         }
       },
       {
-        threshold: 0.2,
-        rootMargin: "-100px",
+        threshold: 0.1,
+        rootMargin: "0px",
       }
     );
 
@@ -94,7 +94,7 @@ function Projects({ projects }: ProjectsProps) {
     <section
       ref={sectionRef}
       id="projects"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-48 md:pb-96 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-32 md:pb-96 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
