@@ -71,7 +71,7 @@ function Experience({ experiences }: ExperienceProps) {
   return (
     <section
       id="experience"
-      className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-8 pb-16 overflow-x-hidden"
+      className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-32 md:pt-48 pb-16 overflow-x-hidden"
     >
       <div className="text-center mb-12 md:mb-16">
         <h2

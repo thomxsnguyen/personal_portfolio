@@ -38,16 +38,19 @@ function HomePage({ name }: HomePageProps) {
     <section
       ref={sectionRef}
       id="home"
-      className={`flex flex-col items-start pt-16 md:pt-32 px-4 md:px-6 md:pl-20 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
+      className={`flex flex-col items-center justify-center pt-32 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
-      style={{ paddingBottom: "20vh" }}
+      style={{
+        paddingBottom: "40vh",
+        minHeight: "100vh",
+      }}
     >
-      <div className="w-full max-w-7xl px-2 sm:px-4 md:px-8">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 items-start md:items-start w-full">
+      <div className="w-full max-w-4xl mx-auto px-2">
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 justify-center">
           {/* Left side - Title and Links */}
-          <div className="flex flex-col items-start gap-y-4 md:gap-y-8 flex-shrink-0 mt-8 md:mt-24 w-full md:w-auto overflow-x-hidden max-w-full">
-            <div className="max-w-full overflow-hidden">
+          <div className="flex flex-col items-center md:items-start gap-y-2">
+            <div className="overflow-hidden scale-75 md:scale-85 lg:scale-95 origin-center md:origin-left">
               <TypeWriter
                 texts={[name, "Computer Science Student at UCI"]}
                 speeds={[50, 40]}
@@ -55,16 +58,16 @@ function HomePage({ name }: HomePageProps) {
                 cursor={true}
               />
             </div>
-            <div className="flex items-center space-x-4 md:space-x-6">
+            <div className="flex items-center space-x-2 scale-75 md:scale-85 lg:scale-95 origin-center md:origin-left">
               <a
                 href="https://github.com/thomxsnguyen"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="text-blue-300 hover:scale-125 transition-transform duration-300 p-1"
+                className="text-blue-300 hover:scale-125 transition-transform duration-300 p-0.5"
               >
                 <svg
-                  className="w-6 h-6 md:w-8 md:h-8"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -76,10 +79,10 @@ function HomePage({ name }: HomePageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="text-blue-300 hover:scale-125 transition-transform duration-300 p-1"
+                className="text-blue-300 hover:scale-125 transition-transform duration-300 p-0.5"
               >
                 <svg
-                  className="w-6 h-6 md:w-8 md:h-8"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -92,7 +95,7 @@ function HomePage({ name }: HomePageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="CV"
-                className="text-blue-300 hover:scale-110 transition-transform duration-300 p-1 text-xl md:text-2xl font-bold"
+                className="text-blue-300 hover:scale-110 transition-transform duration-300 p-0.5 text-base font-bold"
               >
                 CV
               </a>
@@ -100,27 +103,25 @@ function HomePage({ name }: HomePageProps) {
           </div>
 
           {/* Right side - Profile Picture and Introduction */}
-          <div className="flex-1 mt-8 md:mt-16 w-full">
-            <div
-              className="rounded-lg shadow-xl p-4 md:p-6 border-2 border-blue-200 max-w-sm mx-auto md:mx-0"
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-            >
-              <div className="flex flex-col gap-4 md:gap-6 items-center">
-                <img
-                  src={profilePic}
-                  alt="profilepic"
-                  className="w-32 h-32 md:w-48 md:h-48 rounded-lg object-cover shadow-md object-center brightness-110 flex-shrink-0"
-                />
-                <p className="text-gray-500 leading-relaxed text-xs md:text-sm">
-                  Computer Science undergraduate at UC Irvine specializing in
-                  software engineering, machine learning systems, and
-                  distributed cloud architectures. Experienced in developing
-                  scalable full-stack applications with React, Node.js, and
-                  Flutter. Technical expertise spans implementing RESTful APIs,
-                  optimizing database queries, and architecting PyTorch models
-                  for real-time inference.
-                </p>
-              </div>
+          <div
+            className="rounded-lg shadow-xl p-4 border-2 border-blue-200 w-[320px] sm:w-[360px] md:w-[400px]"
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+          >
+            <div className="flex flex-col gap-3 items-center">
+              <img
+                src={profilePic}
+                alt="profilepic"
+                className="w-28 h-28 sm:w-32 sm:h-32 rounded-lg object-cover shadow-md object-center brightness-110 flex-shrink-0"
+              />
+              <p className="text-gray-500 leading-snug text-[10px] sm:text-xs">
+                Computer Science undergraduate at UC Irvine specializing in
+                software engineering, machine learning systems, and distributed
+                cloud architectures. Experienced in developing scalable
+                full-stack applications with React, Node.js, and Flutter.
+                Technical expertise spans implementing RESTful APIs, optimizing
+                database queries, and architecting PyTorch models for real-time
+                inference.
+              </p>
             </div>
           </div>
         </div>

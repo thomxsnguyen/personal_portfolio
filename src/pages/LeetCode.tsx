@@ -141,7 +141,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
     <section
       ref={sectionRef}
       id="leetcode"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-16 md:pb-32 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-32 md:pt-48 pb-16 md:pb-32 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >

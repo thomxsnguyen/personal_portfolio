@@ -31,7 +31,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="w-full flex justify-center pt-2 md:pt-3 sticky top-0 z-50 transition-all duration-300">
+    <nav className="w-full flex justify-center pt-2 md:pt-3 fixed top-0 left-0 right-0 z-[100] transition-all duration-300">
       <div className="w-full max-w-4xl mx-auto px-2 md:px-4">
         <div
           className={`backdrop-blur-md rounded-full px-3 md:px-5 py-1.5 md:py-2 transition-all duration-300

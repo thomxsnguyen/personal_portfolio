@@ -25,28 +25,29 @@ function App() {
 
   return (
     <div
-      id="top"
       className="min-h-screen relative overflow-x-hidden"
       style={{
         background:
           "linear-gradient(to bottom, rgba(147, 197, 253, 0.15) 0%, rgba(191, 219, 254, 0.1) 40%, rgba(219, 234, 254, 0.08) 70%, rgba(240, 249, 255, 0.05) 100%)",
       }}
     >
-      <SideMountains />
-      <SnowParticles
-        className="fixed inset-0 pointer-events-none z-5"
-        count={isMobile ? 50 : 150}
-      />
       <NavBar />
-      <main className="relative z-10 flex flex-col items-center justify-center w-full overflow-x-hidden">
-        <div className="py-10">
-          <HomePage name="Thomas Nguyen" />
-        </div>
-        <Experience />
-        <Projects />
-        <LeetCode username="thomasn8255" />
-        <Contact />
-      </main>
+      <div id="top" className="relative">
+        <SideMountains />
+        <SnowParticles
+          className="fixed inset-0 pointer-events-none z-5"
+          count={isMobile ? 50 : 150}
+        />
+        <main className="relative z-[1] flex flex-col items-center justify-center w-full overflow-x-hidden pt-16">
+          <div className="py-10">
+            <HomePage name="Thomas Nguyen" />
+          </div>
+          <Experience />
+          <Projects />
+          <LeetCode username="thomasn8255" />
+          <Contact />
+        </main>
+      </div>
     </div>
   );
 }

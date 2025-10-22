@@ -44,3 +44,44 @@ nav {
     opacity: 0.95;
   }
 }
+
+/* Responsive padding for home section to accommodate side mountains */
+#home {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  #home {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #home {
+    padding-left: max(1rem, 295px);
+    padding-right: max(1rem, 295px);
+  }
+}
+
+@media (min-width: 1024px) {
+  #home {
+    padding-left: max(1rem, 335px);
+    padding-right: max(1rem, 335px);
+  }
+}
+
+@media (min-width: 1280px) {
+  #home {
+    padding-left: max(1rem, 365px);
+    padding-right: max(1rem, 365px);
+  }
+}
+
+@media (min-width: 1536px) {
+  #home {
+    padding-left: max(1rem, 380px);
+    padding-right: max(1rem, 380px);
+  }
+}

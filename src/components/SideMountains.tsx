@@ -2,14 +2,16 @@ function SideMountains() {
   return (
     <>
       {/* Left side mountain with morning sky - FULL HEIGHT - Hidden on mobile */}
-      <div className="hidden md:block fixed left-0 top-0 h-screen pointer-events-none z-0 drop-shadow-lg">
+      <div className="hidden md:block fixed left-0 top-0 h-screen pointer-events-none z-[-1] drop-shadow-lg w-[280px] lg:w-[320px] xl:w-[350px]">
+        {/* Sky background layer - fills container without scaling */}
         <svg
-          width="350"
+          width="100%"
           height="100%"
           viewBox="0 0 350 1080"
           preserveAspectRatio="none"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="absolute top-0 left-0"
         >
           {/* Morning sky gradient */}
           <defs>
@@ -35,7 +37,18 @@ function SideMountains() {
             height="1080"
             fill="url(#skyGradientLeft)"
           />
+        </svg>
 
+        {/* Clouds and mountains layer - maintains aspect ratio */}
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 350 1080"
+          preserveAspectRatio="xMinYMax slice"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute top-0 left-0"
+        >
           {/* Subtle clouds */}
           <ellipse
             cx="180"
@@ -94,14 +107,16 @@ function SideMountains() {
       </div>
 
       {/* Right side mountain with morning sky - FULL HEIGHT - Hidden on mobile */}
-      <div className="hidden md:block fixed right-0 top-0 h-screen pointer-events-none z-0 drop-shadow-lg">
+      <div className="hidden md:block fixed right-0 top-0 h-screen pointer-events-none z-[-1] drop-shadow-lg w-[280px] lg:w-[320px] xl:w-[350px]">
+        {/* Sky background layer - fills container without scaling */}
         <svg
-          width="350"
+          width="100%"
           height="100%"
           viewBox="0 0 350 1080"
           preserveAspectRatio="none"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="absolute top-0 left-0"
         >
           {/* Morning sky gradient */}
           <defs>
@@ -127,7 +142,18 @@ function SideMountains() {
             height="1080"
             fill="url(#skyGradientRight)"
           />
+        </svg>
 
+        {/* Clouds and mountains layer - maintains aspect ratio */}
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 350 1080"
+          preserveAspectRatio="xMaxYMax slice"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute top-0 left-0"
+        >
           {/* Subtle clouds */}
           <ellipse
             cx="170"

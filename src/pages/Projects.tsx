@@ -69,7 +69,7 @@ function Projects({ projects }: ProjectsProps) {
     <section
       ref={sectionRef}
       id="projects"
-      className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-8 md:pt-32 pb-32 md:pb-96 overflow-x-hidden"
+      className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-32 md:pt-48 pb-32 md:pb-96 overflow-x-hidden"
     >
       <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
         <h2
