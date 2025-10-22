@@ -38,21 +38,23 @@ function HomePage({ name }: HomePageProps) {
     <section
       ref={sectionRef}
       id="home"
-      className={`flex flex-col items-start pt-16 md:pt-32 p-4 md:p-6 md:pl-20 transition-opacity duration-[2000ms] ease-out ${
+      className={`flex flex-col items-start pt-16 md:pt-32 px-4 md:px-6 md:pl-20 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       style={{ paddingBottom: "20vh" }}
     >
-      <div className="w-full max-w-7xl px-4 md:px-8">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 items-start md:items-start">
+      <div className="w-full max-w-7xl px-2 sm:px-4 md:px-8">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 items-start md:items-start w-full">
           {/* Left side - Title and Links */}
-          <div className="flex flex-col items-start gap-y-4 md:gap-y-8 flex-shrink-0 mt-8 md:mt-24 w-full md:w-auto">
-            <TypeWriter
-              texts={[name, "Computer Science Student at UCI"]}
-              speeds={[50, 40]}
-              delays={[500, 300]}
-              cursor={true}
-            />
+          <div className="flex flex-col items-start gap-y-4 md:gap-y-8 flex-shrink-0 mt-8 md:mt-24 w-full md:w-auto overflow-x-hidden max-w-full">
+            <div className="max-w-full overflow-hidden">
+              <TypeWriter
+                texts={[name, "Computer Science Student at UCI"]}
+                speeds={[50, 40]}
+                delays={[500, 300]}
+                cursor={true}
+              />
+            </div>
             <div className="flex items-center space-x-4 md:space-x-6">
               <a
                 href="https://github.com/thomxsnguyen"

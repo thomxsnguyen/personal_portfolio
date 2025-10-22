@@ -141,7 +141,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
     <section
       ref={sectionRef}
       id="leetcode"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-24 md:pt-48 pb-16 md:pb-32 transition-opacity duration-[2000ms] ease-out ${
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-24 md:pt-48 pb-16 md:pb-32 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -163,7 +163,9 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         {/* Easy Section */}
         <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 border-2 border-blue-200">
           <div className="text-center">
-            <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">Easy</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">
+              Easy
+            </h3>
             <div className="text-2xl md:text-3xl font-bold text-gray-500">
               {easySolved ?? 0}
             </div>
@@ -173,7 +175,9 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         {/* Medium Section */}
         <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 border-2 border-blue-200">
           <div className="text-center">
-            <h3 className="text-xl md:text-2xl font-bold text-yellow-600 mb-2">Medium</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-yellow-600 mb-2">
+              Medium
+            </h3>
             <div className="text-2xl md:text-3xl font-bold text-gray-500">
               {mediumSolved ?? 0}
             </div>
@@ -183,7 +187,9 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         {/* Hard Section */}
         <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 border-2 border-blue-200">
           <div className="text-center">
-            <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-2">Hard</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-2">
+              Hard
+            </h3>
             <div className="text-2xl md:text-3xl font-bold text-gray-500">
               {hardSolved ?? 0}
             </div>

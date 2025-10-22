@@ -32,7 +32,7 @@ function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-32 min-h-screen flex flex-col justify-center transition-opacity duration-[2000ms] ease-out ${
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-32 min-h-screen flex flex-col justify-center transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >

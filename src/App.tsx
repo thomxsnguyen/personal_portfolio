@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
 import Projects from "./pages/Projects";
@@ -9,10 +10,23 @@ import SnowParticles from "./components/SnowParticles";
 import SideMountains from "./components/SideMountains";
 
 function App() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div
       id="top"
-      className="min-h-screen relative"
+      className="min-h-screen relative overflow-x-hidden"
       style={{
         background:
           "linear-gradient(to bottom, rgba(147, 197, 253, 0.15) 0%, rgba(191, 219, 254, 0.1) 40%, rgba(219, 234, 254, 0.08) 70%, rgba(240, 249, 255, 0.05) 100%)",
@@ -21,10 +35,10 @@ function App() {
       <SideMountains />
       <SnowParticles
         className="fixed inset-0 pointer-events-none z-5"
-        count={150}
+        count={isMobile ? 50 : 150}
       />
       <NavBar />
-      <main className="relative z-10 flex flex-col items-center justify-center">
+      <main className="relative z-10 flex flex-col items-center justify-center w-full overflow-x-hidden">
         <div className="py-10">
           <HomePage name="Thomas Nguyen" />
         </div>
