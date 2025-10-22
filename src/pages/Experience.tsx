@@ -74,8 +74,16 @@ function Experience({ experiences }: ExperienceProps) {
       className="w-full max-w-6xl mx-auto px-6 pt-8 pb-16"
     >
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">Experience</h2>
-        <p className="text-xl text-gray-600">
+        <h2
+          className="text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
+          style={{ fontFamily: "'Dancing Script', cursive" }}
+        >
+          Experience
+        </h2>
+        <p
+          className="text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
+          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
+        >
           My professional journey and accomplishments
         </p>
       </div>
@@ -112,13 +120,16 @@ function Experience({ experiences }: ExperienceProps) {
                       </div>
                     )}
 
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    <h3 className="text-xl font-bold text-gray-500 mb-2">
                       {experience.position}
                     </h3>
-                    <p className="text-lg font-medium text-blue-400 mb-3">
+                    <p
+                      className="text-2xl text-blue-400 mb-3"
+                      style={{ fontFamily: "'Dancing Script', cursive" }}
+                    >
                       @ {experience.company}
                     </p>
-                    <div className="flex items-center text-sm text-gray-600 mb-4">
+                    <div className="flex items-center text-sm text-gray-500 mb-4">
                       <svg
                         className="w-4 h-4 mr-1"
                         fill="none"
@@ -149,8 +160,17 @@ function Experience({ experiences }: ExperienceProps) {
                 )}
               </div>
 
-              {/* Timeline Dot */}
-              <div className="absolute left-1/2 top-20 transform -translate-x-1/2 w-4 h-4 bg-blue-400 rounded-full border-4 border-white shadow-lg z-10"></div>
+              {/* Timeline Dot with Year */}
+              <div className="absolute left-1/2 top-20 transform -translate-x-1/2 flex items-center z-10">
+                <div className="w-4 h-4 bg-blue-400 rounded-full border-4 border-white shadow-lg"></div>
+                <div
+                  className={`absolute bg-blue-400 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap ${
+                    index % 2 === 0 ? "-right-16" : "-left-16"
+                  }`}
+                >
+                  {experience.duration.split(" ")[1]}
+                </div>
+              </div>
 
               {/* Right Side Content (for odd indices) */}
               <div className={`w-1/2 ${index % 2 === 1 ? "pl-8" : ""}`}>
@@ -173,13 +193,16 @@ function Experience({ experiences }: ExperienceProps) {
                       </div>
                     )}
 
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    <h3 className="text-xl font-bold text-gray-500 mb-2">
                       {experience.position}
                     </h3>
-                    <p className="text-lg font-medium text-blue-400 mb-3">
+                    <p
+                      className="text-2xl text-blue-400 mb-3"
+                      style={{ fontFamily: "'Dancing Script', cursive" }}
+                    >
                       @ {experience.company}
                     </p>
-                    <div className="flex items-center text-sm text-gray-600 mb-4">
+                    <div className="flex items-center text-sm text-gray-500 mb-4">
                       <svg
                         className="w-4 h-4 mr-1"
                         fill="none"

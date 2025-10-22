@@ -146,8 +146,16 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
       }`}
     >
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">LeetCode</h2>
-        <p className="text-xl text-gray-600">
+        <h2
+          className="text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
+          style={{ fontFamily: "'Dancing Script', cursive" }}
+        >
+          LeetCode
+        </h2>
+        <p
+          className="text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
+          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
+        >
           My coding problem solutions and progress
         </p>
       </div>
@@ -156,30 +164,30 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-blue-200">
           <div className="text-center">
             <h3 className="text-2xl font-bold text-green-600 mb-2">Easy</h3>
-            <div className="text-3xl font-bold text-gray-800">
+            <div className="text-3xl font-bold text-gray-500">
               {easySolved ?? 0}
             </div>
-            <p className="text-gray-600">Problems Solved</p>
+            <p className="text-gray-500">Problems Solved</p>
           </div>
         </div>
         {/* Medium Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-blue-200">
           <div className="text-center">
             <h3 className="text-2xl font-bold text-yellow-600 mb-2">Medium</h3>
-            <div className="text-3xl font-bold text-gray-800">
+            <div className="text-3xl font-bold text-gray-500">
               {mediumSolved ?? 0}
             </div>
-            <p className="text-gray-600">Problems Solved</p>
+            <p className="text-gray-500">Problems Solved</p>
           </div>
         </div>
         {/* Hard Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-blue-200">
           <div className="text-center">
             <h3 className="text-2xl font-bold text-red-600 mb-2">Hard</h3>
-            <div className="text-3xl font-bold text-gray-800">
+            <div className="text-3xl font-bold text-gray-500">
               {hardSolved ?? 0}
             </div>
-            <p className="text-gray-600">Problems Solved</p>
+            <p className="text-gray-500">Problems Solved</p>
           </div>
         </div>
       </div>
@@ -189,7 +197,7 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
           href={profileUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-4 py-2 rounded-md bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
+          className="inline-flex items-center px-4 py-2 rounded-md bg-gray-500 text-white text-sm font-medium hover:bg-gray-600 transition-colors duration-200"
         >
           View LeetCode Profile
         </a>

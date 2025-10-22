@@ -46,7 +46,7 @@ function Projects({ projects }: ProjectsProps) {
     {
       title: "ArtistShuffler",
       description:
-        "Full-stack web application using Python and Flask to interact with Spotify's API, enabling music playback from selected artists. Features real-time updates and asynchronous API interactions for seamless user experience.",
+        "Full-stack web app enabling Spotify users to blend and play playlists from multiple artists. Features Flask backend with Spotipy API integration, React TypeScript frontend, OAuth 2.0 authentication, real-time artist search, and dynamic playlist generation. Utilizes Axios for REST API communication and Tailwind CSS with Headless UI for a responsive, accessible interface.",
       technologies: [
         "React",
         "TypeScript",
@@ -67,8 +67,15 @@ function Projects({ projects }: ProjectsProps) {
       imageUrl: "/R199.png",
     },
     {
+      title: "Context Bandit Dashboard",
+      description: "Currently Under Development.",
+      technologies: [],
+      githubLink: "https://github.com/thomxsnguyen/ContextBanditDashboard",
+      imageUrl: "/contextbandit.png",
+    },
+    {
       title: "RouteCrafter",
-      description: "Currently Under Development..",
+      description: "Currently Under Development.",
       technologies: [
         "React",
         "Node.js",
@@ -78,12 +85,6 @@ function Projects({ projects }: ProjectsProps) {
         "Redis",
       ],
       githubLink: "https://github.com/thomxsnguyen/RouteCrafter",
-    },
-    {
-      title: "Context Bandit Dashboard",
-      description: "Under Development.",
-      technologies: [],
-      githubLink: "https://github.com/thomxsnguyen/ContextBanditDashboard",
     },
   ];
 
@@ -98,8 +99,16 @@ function Projects({ projects }: ProjectsProps) {
       }`}
     >
       <div className="text-center mb-12 flex flex-col items-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">Projects</h2>
-        <p className="text-xl text-gray-600">
+        <h2
+          className="text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
+          style={{ fontFamily: "'Dancing Script', cursive" }}
+        >
+          Projects
+        </h2>
+        <p
+          className="text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
+          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
+        >
           A showcase of my work and technical skills
         </p>
       </div>
@@ -119,10 +128,10 @@ function Projects({ projects }: ProjectsProps) {
               </div>
             )}
             <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-3">
+              <h3 className="text-xl font-bold text-gray-500 mb-3">
                 {project.title}
               </h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
+              <p className="text-gray-500 mb-4 leading-relaxed">
                 {project.description}
               </p>
               <div className="mb-4">

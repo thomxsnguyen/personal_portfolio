@@ -50,6 +50,7 @@ function NavBar() {
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
+                style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
               >
                 Home
               </a>
@@ -59,6 +60,7 @@ function NavBar() {
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
+                style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
               >
                 Experience
               </a>
@@ -68,6 +70,7 @@ function NavBar() {
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
+                style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
               >
                 Projects
               </a>
@@ -77,8 +80,19 @@ function NavBar() {
                 className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
                   isScrolled ? "text-blue-400" : "text-blue-300"
                 }`}
+                style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
               >
                 LeetCode
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => handleSmoothScroll(e, "#contact")}
+                className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:underline hover:underline-offset-2 ${
+                  isScrolled ? "text-blue-400" : "text-blue-300"
+                }`}
+                style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 500 }}
+              >
+                Contact
               </a>
             </div>
             <span

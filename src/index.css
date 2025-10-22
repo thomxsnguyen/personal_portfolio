@@ -4,6 +4,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 /* Add background to navbar when at top */
 nav {
   background: linear-gradient(

@@ -36,6 +36,49 @@ function SideMountains() {
             fill="url(#skyGradientLeft)"
           />
 
+          {/* Subtle clouds */}
+          <ellipse
+            cx="180"
+            cy="200"
+            rx="60"
+            ry="20"
+            fill="white"
+            opacity="0.15"
+          />
+          <ellipse
+            cx="150"
+            cy="210"
+            rx="40"
+            ry="15"
+            fill="white"
+            opacity="0.12"
+          />
+          <ellipse
+            cx="210"
+            cy="205"
+            rx="45"
+            ry="18"
+            fill="white"
+            opacity="0.13"
+          />
+
+          <ellipse
+            cx="100"
+            cy="350"
+            rx="50"
+            ry="18"
+            fill="white"
+            opacity="0.1"
+          />
+          <ellipse
+            cx="130"
+            cy="355"
+            rx="35"
+            ry="12"
+            fill="white"
+            opacity="0.12"
+          />
+
           {/* Bottom mountains */}
           <path
             d="M0 1080 L70 930 L140 980 L210 900 L280 960 L350 860 L350 1080 Z"
@@ -83,6 +126,49 @@ function SideMountains() {
             width="350"
             height="1080"
             fill="url(#skyGradientRight)"
+          />
+
+          {/* Subtle clouds */}
+          <ellipse
+            cx="170"
+            cy="220"
+            rx="55"
+            ry="18"
+            fill="white"
+            opacity="0.15"
+          />
+          <ellipse
+            cx="200"
+            cy="225"
+            rx="40"
+            ry="15"
+            fill="white"
+            opacity="0.12"
+          />
+          <ellipse
+            cx="145"
+            cy="215"
+            rx="38"
+            ry="16"
+            fill="white"
+            opacity="0.13"
+          />
+
+          <ellipse
+            cx="250"
+            cy="380"
+            rx="48"
+            ry="17"
+            fill="white"
+            opacity="0.1"
+          />
+          <ellipse
+            cx="220"
+            cy="385"
+            rx="32"
+            ry="13"
+            fill="white"
+            opacity="0.12"
           />
 
           {/* Bottom mountains */}

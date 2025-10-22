@@ -4,12 +4,20 @@ import NavBar from "./components/NavBar";
 import Projects from "./pages/Projects";
 import LeetCode from "./pages/LeetCode";
 import Experience from "./pages/Experience";
+import Contact from "./pages/Contact";
 import SnowParticles from "./components/SnowParticles";
 import SideMountains from "./components/SideMountains";
 
 function App() {
   return (
-    <div id="top" className="bg-blue-50 min-h-screen relative">
+    <div
+      id="top"
+      className="min-h-screen relative"
+      style={{
+        background:
+          "linear-gradient(to bottom, rgba(147, 197, 253, 0.15) 0%, rgba(191, 219, 254, 0.1) 40%, rgba(219, 234, 254, 0.08) 70%, rgba(240, 249, 255, 0.05) 100%)",
+      }}
+    >
       <SideMountains />
       <SnowParticles
         className="fixed inset-0 pointer-events-none z-5"
@@ -23,6 +31,7 @@ function App() {
         <Experience />
         <Projects />
         <LeetCode username="thomasn8255" />
+        <Contact />
       </main>
     </div>
   );

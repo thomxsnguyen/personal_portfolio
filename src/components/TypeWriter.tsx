@@ -107,16 +107,26 @@ function TypeWriter({
         {/* Invisible placeholder to maintain layout */}
         <h1
           ref={line1PlaceholderRef}
-          className="text-6xl font-bold text-gray-800 invisible whitespace-nowrap"
+          className="text-6xl md:text-7xl text-blue-400 invisible whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
+          style={{
+            fontFamily: "'Dancing Script', cursive",
+            letterSpacing: "0.05em",
+          }}
         >
           {texts[0] || ""}
         </h1>
         {/* Actual typed text positioned absolutely */}
-        <h1 className="text-6xl font-bold text-gray-800 absolute top-0 left-0 whitespace-nowrap">
+        <h1
+          className="text-6xl md:text-7xl text-blue-400 absolute top-0 left-0 whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
+          style={{
+            fontFamily: "'Dancing Script', cursive",
+            letterSpacing: "0.05em",
+          }}
+        >
           {displayTexts[0]}
           {cursor && (
             <span
-              className={`inline-block w-1 h-16 bg-gray-800 ml-1 transition-opacity duration-100 ${
+              className={`inline-block w-1 h-20 bg-blue-400 ml-1 transition-opacity duration-100 ${
                 !isComplete && currentLineIndex === 0
                   ? showCursor
                     ? "opacity-100"
@@ -130,7 +140,7 @@ function TypeWriter({
 
       {/* Reserve space for the second line */}
       <div
-        className="relative mt-2"
+        className="relative mt-6"
         style={
           line2WidthPx !== null ? { width: `${line2WidthPx}px` } : undefined
         }
@@ -138,16 +148,20 @@ function TypeWriter({
         {/* Invisible placeholder to maintain layout */}
         <h2
           ref={line2PlaceholderRef}
-          className="text-2xl text-gray-600 invisible"
+          className="text-xl md:text-2xl text-blue-300 invisible whitespace-nowrap drop-shadow-[0_2px_3px_rgba(255,255,255,0.7)]"
+          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
         >
           {texts[1] || ""}
         </h2>
         {/* Actual typed text positioned absolutely */}
-        <h2 className="text-2xl text-gray-600 absolute top-0 left-0">
+        <h2
+          className="text-xl md:text-2xl text-blue-300 absolute top-0 left-0 whitespace-nowrap drop-shadow-[0_2px_3px_rgba(255,255,255,0.7)]"
+          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
+        >
           {displayTexts[1]}
           {cursor && (
             <span
-              className={`inline-block w-0.5 h-7 bg-gray-600 ml-1 transition-opacity duration-100 ${
+              className={`inline-block w-0.5 h-8 bg-blue-300 ml-1 transition-opacity duration-100 ${
                 !isComplete && currentLineIndex === 1
                   ? showCursor
                     ? "opacity-100"
