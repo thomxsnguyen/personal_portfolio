@@ -47,7 +47,7 @@ function Experience({ experiences }: ExperienceProps) {
     {
       company: "SportsStake",
       position: "Software Engineer Intern",
-      duration: "June 2024 - September 2024",
+      duration: "June 2025 - September 2025",
       location: "Los Angeles, CA",
       description: [
         "Built fantasy-sports features in Flutter/Dart and deployed Node.js backend on AWS with Docker and CI/CD, reducing deployment overhead by 70% and response latency by 40% with Redis caching.",
