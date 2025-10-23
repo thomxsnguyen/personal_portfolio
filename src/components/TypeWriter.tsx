@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface TypeWriterProps {
   texts: string[];
@@ -26,13 +26,6 @@ function TypeWriter({
   const [showCursor, setShowCursor] = useState(true);
   const line1PlaceholderRef = useRef<HTMLHeadingElement | null>(null);
   const line2PlaceholderRef = useRef<HTMLHeadingElement | null>(null);
-  const [line1WidthPx, setLine1WidthPx] = useState<number | null>(null);
-
-  // Measure placeholder widths to lock container widths and prevent any shift
-  useLayoutEffect(() => {
-    const w1 = line1PlaceholderRef.current?.offsetWidth ?? null;
-    if (w1 !== null) setLine1WidthPx(w1);
-  }, [texts]);
 
   useEffect(() => {
     if (currentLineIndex >= texts.length) {
@@ -93,16 +86,11 @@ function TypeWriter({
   }, [cursor]);
 
   return (
-    <div className={`${className} max-w-full overflow-hidden`}>
+    <div
+      className={`${className} max-w-full overflow-hidden flex flex-col items-center`}
+    >
       {/* Reserve space for the first line */}
-      <div
-        className="relative max-w-full"
-        style={
-          line1WidthPx !== null
-            ? { width: `${line1WidthPx}px`, maxWidth: "100%" }
-            : { maxWidth: "100%" }
-        }
-      >
+      <div className="relative flex justify-center">
         {/* Invisible placeholder to maintain layout */}
         <h1
           ref={line1PlaceholderRef}
@@ -116,7 +104,7 @@ function TypeWriter({
         </h1>
         {/* Actual typed text positioned absolutely */}
         <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-400 absolute top-0 left-0 whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-400 absolute top-0 left-1/2 -translate-x-1/2 whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
           style={{
             fontFamily: "'Dancing Script', cursive",
             letterSpacing: "0.05em",

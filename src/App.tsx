@@ -38,8 +38,8 @@ function App() {
           className="fixed inset-0 pointer-events-none z-5"
           count={isMobile ? 50 : 150}
         />
-        <main className="relative z-[1] flex flex-col items-center justify-center w-full overflow-x-hidden pt-16">
-          <div className="py-10">
+        <main className="relative z-[1] flex flex-col items-center justify-center w-full overflow-x-hidden pt-16 bg-transparent">
+          <div className="py-10 bg-transparent">
             <HomePage name="Thomas Nguyen" />
           </div>
           <Experience />
