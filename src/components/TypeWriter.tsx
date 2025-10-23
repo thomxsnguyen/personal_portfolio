@@ -27,14 +27,11 @@ function TypeWriter({
   const line1PlaceholderRef = useRef<HTMLHeadingElement | null>(null);
   const line2PlaceholderRef = useRef<HTMLHeadingElement | null>(null);
   const [line1WidthPx, setLine1WidthPx] = useState<number | null>(null);
-  const [line2WidthPx, setLine2WidthPx] = useState<number | null>(null);
 
   // Measure placeholder widths to lock container widths and prevent any shift
   useLayoutEffect(() => {
     const w1 = line1PlaceholderRef.current?.offsetWidth ?? null;
-    const w2 = line2PlaceholderRef.current?.offsetWidth ?? null;
     if (w1 !== null) setLine1WidthPx(w1);
-    if (w2 !== null) setLine2WidthPx(w2);
   }, [texts]);
 
   useEffect(() => {
@@ -109,7 +106,7 @@ function TypeWriter({
         {/* Invisible placeholder to maintain layout */}
         <h1
           ref={line1PlaceholderRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-blue-400 invisible whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-400 invisible whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
           style={{
             fontFamily: "'Dancing Script', cursive",
             letterSpacing: "0.05em",
@@ -119,7 +116,7 @@ function TypeWriter({
         </h1>
         {/* Actual typed text positioned absolutely */}
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-blue-400 absolute top-0 left-0 whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-400 absolute top-0 left-0 whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
           style={{
             fontFamily: "'Dancing Script', cursive",
             letterSpacing: "0.05em",
@@ -128,7 +125,7 @@ function TypeWriter({
           {displayTexts[0]}
           {cursor && (
             <span
-              className={`inline-block w-0.5 md:w-1 h-12 sm:h-14 md:h-16 lg:h-20 bg-blue-400 ml-1 transition-opacity duration-100 ${
+              className={`inline-block w-0.5 md:w-1 h-14 sm:h-16 md:h-20 lg:h-24 bg-blue-400 ml-1 transition-opacity duration-100 ${
                 !isComplete && currentLineIndex === 0
                   ? showCursor
                     ? "opacity-100"
@@ -141,14 +138,7 @@ function TypeWriter({
       </div>
 
       {/* Reserve space for the second line */}
-      <div
-        className="relative mt-6 max-w-full"
-        style={
-          line2WidthPx !== null
-            ? { width: `${line2WidthPx}px`, maxWidth: "100%" }
-            : { maxWidth: "100%" }
-        }
-      >
+      <div className="relative mt-6 w-full flex justify-center">
         {/* Invisible placeholder to maintain layout */}
         <h2
           ref={line2PlaceholderRef}
@@ -159,7 +149,7 @@ function TypeWriter({
         </h2>
         {/* Actual typed text positioned absolutely */}
         <h2
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-300 absolute top-0 left-0 whitespace-nowrap drop-shadow-[0_2px_3px_rgba(255,255,255,0.7)]"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-300 absolute top-0 left-1/2 -translate-x-1/2 whitespace-nowrap drop-shadow-[0_2px_3px_rgba(255,255,255,0.7)]"
           style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
         >
           {displayTexts[1]}

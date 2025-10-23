@@ -38,7 +38,7 @@ function HomePage({ name }: HomePageProps) {
     <section
       ref={sectionRef}
       id="home"
-      className={`flex flex-col items-center justify-center pt-32 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
+      className={`flex flex-col items-center justify-center pt-48 md:pt-56 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       style={{
@@ -47,10 +47,10 @@ function HomePage({ name }: HomePageProps) {
       }}
     >
       <div className="w-full max-w-4xl mx-auto px-2">
-        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 justify-center">
-          {/* Left side - Title and Links */}
-          <div className="flex flex-col items-center md:items-start gap-y-2">
-            <div className="overflow-hidden scale-75 md:scale-85 lg:scale-95 origin-center md:origin-left">
+        <div className="flex flex-col items-center gap-12 md:gap-16">
+          {/* Title and Links Group */}
+          <div className="flex flex-col items-center gap-3">
+            <div className="overflow-hidden scale-75 md:scale-85 lg:scale-95">
               <TypeWriter
                 texts={[name, "Computer Science Student at UCI"]}
                 speeds={[50, 40]}
@@ -58,7 +58,9 @@ function HomePage({ name }: HomePageProps) {
                 cursor={true}
               />
             </div>
-            <div className="flex items-center space-x-2 scale-75 md:scale-85 lg:scale-95 origin-center md:origin-left">
+
+            {/* Links */}
+            <div className="flex items-center space-x-3 scale-90 md:scale-100">
               <a
                 href="https://github.com/thomxsnguyen"
                 target="_blank"
@@ -67,7 +69,7 @@ function HomePage({ name }: HomePageProps) {
                 className="text-blue-300 hover:scale-125 transition-transform duration-300 p-0.5"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-8 h-8 md:w-10 md:h-10"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -82,7 +84,7 @@ function HomePage({ name }: HomePageProps) {
                 className="text-blue-300 hover:scale-125 transition-transform duration-300 p-0.5"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-8 h-8 md:w-10 md:h-10"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -95,25 +97,25 @@ function HomePage({ name }: HomePageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="CV"
-                className="text-blue-300 hover:scale-110 transition-transform duration-300 p-0.5 text-base font-bold"
+                className="text-blue-300 hover:scale-110 transition-transform duration-300 p-0.5 text-lg md:text-xl font-bold"
               >
                 CV
               </a>
             </div>
           </div>
 
-          {/* Right side - Profile Picture and Introduction */}
+          {/* Profile Picture and About Me Box */}
           <div
-            className="rounded-lg shadow-xl p-4 border-2 border-blue-200 w-[320px] sm:w-[360px] md:w-[400px]"
+            className="rounded-lg shadow-xl p-6 md:p-7 border-2 border-blue-200 w-[340px] sm:w-[380px] md:w-[450px] lg:w-[500px]"
             style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
           >
-            <div className="flex flex-col gap-3 items-center">
+            <div className="flex flex-col gap-4 md:gap-5 items-center">
               <img
                 src={profilePic}
                 alt="profilepic"
-                className="w-28 h-28 sm:w-32 sm:h-32 rounded-lg object-cover shadow-md object-center brightness-110 flex-shrink-0"
+                className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg object-cover shadow-md object-center brightness-110 flex-shrink-0"
               />
-              <p className="text-gray-500 leading-snug text-[10px] sm:text-xs">
+              <p className="text-gray-500 leading-relaxed text-[11px] sm:text-xs md:text-sm">
                 Computer Science undergraduate at UC Irvine specializing in
                 software engineering, machine learning systems, and distributed
                 cloud architectures. Experienced in developing scalable
