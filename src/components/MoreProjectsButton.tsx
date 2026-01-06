@@ -13,7 +13,7 @@ function MoreProjectsButton({
         href={href}
         className="inline-flex items-center px-6 py-3 bg-neutral-800 text-neutral-300 rounded-lg hover:bg-neutral-700 hover:text-white transition-all duration-300 font-medium border border-neutral-700"
       >
-        More projects
+        more projects
         <svg
           className="w-4 h-4 ml-2"
           fill="none"

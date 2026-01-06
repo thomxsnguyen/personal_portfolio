@@ -136,12 +136,34 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
   }, []);
 
   const profileUrl = `https://leetcode.com/${username}/`;
-  const totalSolved = (easySolved ?? 0) + (mediumSolved ?? 0) + (hardSolved ?? 0);
+  const totalSolved =
+    (easySolved ?? 0) + (mediumSolved ?? 0) + (hardSolved ?? 0);
 
   const difficultyLevels = [
-    { name: "Easy", count: easySolved ?? 0, color: "text-emerald-400", bgColor: "bg-emerald-900/30", textColor: "text-emerald-400", borderColor: "border-emerald-800" },
-    { name: "Medium", count: mediumSolved ?? 0, color: "text-amber-400", bgColor: "bg-amber-900/30", textColor: "text-amber-400", borderColor: "border-amber-800" },
-    { name: "Hard", count: hardSolved ?? 0, color: "text-rose-400", bgColor: "bg-rose-900/30", textColor: "text-rose-400", borderColor: "border-rose-800" },
+    {
+      name: "Easy",
+      count: easySolved ?? 0,
+      color: "text-emerald-400",
+      bgColor: "bg-emerald-900/30",
+      textColor: "text-emerald-400",
+      borderColor: "border-emerald-800",
+    },
+    {
+      name: "Medium",
+      count: mediumSolved ?? 0,
+      color: "text-amber-400",
+      bgColor: "bg-amber-900/30",
+      textColor: "text-amber-400",
+      borderColor: "border-amber-800",
+    },
+    {
+      name: "Hard",
+      count: hardSolved ?? 0,
+      color: "text-rose-400",
+      bgColor: "bg-rose-900/30",
+      textColor: "text-rose-400",
+      borderColor: "border-rose-800",
+    },
   ];
 
   return (
@@ -155,10 +177,10 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
       {/* Section Header */}
       <div className="text-center mb-12 md:mb-16">
         <h2
-          className="text-4xl md:text-5xl font-bold text-neutral-100 mb-4"
+          className="text-4xl md:text-5xl font-light text-neutral-100 mb-4"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          LeetCode
+          leetcode
         </h2>
       </div>
 
@@ -168,8 +190,10 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         <div className="backdrop-blur-md bg-neutral-900/60 rounded-3xl shadow-xl border border-neutral-800 p-6 md:p-8 mb-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <p className="text-sm text-neutral-500 uppercase tracking-wider font-medium mb-1">Total Problems Solved</p>
-              <p className="text-5xl md:text-6xl font-bold text-neutral-100">
+              <p className="text-sm text-neutral-500 uppercase tracking-wider font-medium mb-1">
+                Total Problems Solved
+              </p>
+              <p className="text-5xl md:text-6xl font-light text-neutral-100">
                 {totalSolved}
               </p>
             </div>
@@ -184,11 +208,13 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
               className="backdrop-blur-md bg-neutral-900/60 rounded-2xl shadow-lg border border-neutral-800 p-5 hover:border-neutral-700 transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className={`px-3 py-1 ${level.bgColor} ${level.textColor} text-xs font-semibold rounded-full border ${level.borderColor}`}>
+                <span
+                  className={`px-3 py-1 ${level.bgColor} ${level.textColor} text-xs font-semibold rounded-full border ${level.borderColor}`}
+                >
                   {level.name}
                 </span>
               </div>
-              <p className={`text-4xl font-bold ${level.color}`}>
+              <p className={`text-4xl font-light ${level.color}`}>
                 {level.count}
               </p>
               <p className="text-sm text-neutral-500 mt-1">problems solved</p>
@@ -200,15 +226,30 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         <div className="backdrop-blur-md bg-neutral-900/60 rounded-2xl shadow-lg border border-neutral-800 p-5 mb-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center">
-              <svg className="w-6 h-6 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <svg
+                className="w-6 h-6 text-neutral-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-neutral-100" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <h3
+                className="text-lg font-light text-neutral-100"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
                 Solution Explanations
               </h3>
-              <p className="text-sm text-neutral-500">Detailed breakdowns coming soon</p>
+              <p className="text-sm text-neutral-500">
+                Detailed breakdowns coming soon
+              </p>
             </div>
           </div>
         </div>
@@ -232,9 +273,24 @@ function LeetCode({ username = "your-username" }: LeetCodeProps) {
         {loading && (
           <div className="text-center mt-8">
             <div className="inline-flex items-center gap-2 text-neutral-500">
-              <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <svg
+                className="animate-spin w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
               </svg>
               Loading stats...
             </div>

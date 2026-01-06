@@ -37,7 +37,7 @@ function SnowParticles({ className, count = 40 }: SnowParticlesProps) {
       flake.style.animation = `snow-fall ${duration}s linear ${delay}s infinite`;
       flake.style.transform = `translateX(${drift}px)`;
       flake.style.pointerEvents = "none";
-      
+
       container.appendChild(flake);
       particles.push(flake);
     }

@@ -109,7 +109,12 @@ function Experience({ experiences }: ExperienceProps) {
     >
       {/* Section Header */}
       <div className="text-center mb-12 md:mb-16">
-        <p className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>Career Journey</p>
+        <p
+          className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-2"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          Career Journey
+        </p>
         <h2
           className="text-3xl md:text-4xl font-bold text-neutral-100 mb-4"
           style={{ fontFamily: "'Inter', sans-serif" }}
@@ -143,9 +148,11 @@ function Experience({ experiences }: ExperienceProps) {
             </div>
 
             {/* Card */}
-            <div className={`group backdrop-blur-md bg-neutral-900/60 rounded-2xl shadow-lg border border-neutral-800 overflow-hidden hover:border-neutral-700 transition-all duration-500 ${
-              index % 2 === 0 ? "md:mr-8" : "md:ml-8"
-            }`}>
+            <div
+              className={`group backdrop-blur-md bg-neutral-900/60 rounded-2xl shadow-lg border border-neutral-800 overflow-hidden hover:border-neutral-700 transition-all duration-500 ${
+                index % 2 === 0 ? "md:mr-8" : "md:ml-8"
+              }`}
+            >
               {/* Company Image */}
               {experience.image && (
                 <div className="relative h-32 md:h-40 bg-neutral-800 overflow-hidden">
@@ -155,7 +162,7 @@ function Experience({ experiences }: ExperienceProps) {
                     className="w-full h-full object-cover opacity-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-transparent to-transparent"></div>
-                  
+
                   {/* Type Badge */}
                   <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-900/80 text-neutral-400 border border-neutral-700">
                     {experience.type === "research" ? "Research" : "Industry"}
@@ -166,27 +173,58 @@ function Experience({ experiences }: ExperienceProps) {
               {/* Content */}
               <div className="p-5 md:p-6">
                 {/* Position */}
-                <h3 className="text-lg md:text-xl font-semibold text-neutral-100 mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <h3
+                  className="text-lg md:text-xl font-semibold text-neutral-100 mb-1"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
                   {experience.position}
                 </h3>
 
                 {/* Company */}
-                <p className="text-base md:text-lg font-medium text-neutral-400 mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <p
+                  className="text-base md:text-lg font-medium text-neutral-400 mb-3"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
                   {experience.company}
                 </p>
 
                 {/* Duration & Location */}
                 <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-500 mb-4">
                   <span className="inline-flex items-center gap-1.5">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
                     </svg>
                     {experience.duration}
                   </span>
                   <span className="inline-flex items-center gap-1.5">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
                     </svg>
                     {experience.location}
                   </span>

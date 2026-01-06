@@ -26,17 +26,19 @@ function App() {
     <div
       className="min-h-screen relative overflow-x-hidden"
       style={{
-        background: "linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0d0d0d 100%)",
+        background:
+          "linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0d0d0d 100%)",
       }}
     >
       {/* Subtle gradient overlay for depth */}
-      <div 
+      <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
-          background: "radial-gradient(ellipse at top, rgba(30, 30, 30, 0.5) 0%, transparent 60%)",
+          background:
+            "radial-gradient(ellipse at top, rgba(30, 30, 30, 0.5) 0%, transparent 60%)",
         }}
       />
-      
+
       <NavBar />
       <div id="top" className="relative">
         <SideMountains />
@@ -46,7 +48,7 @@ function App() {
         />
         <main className="relative z-[1] flex flex-col items-center justify-center w-full overflow-x-hidden pt-16 bg-transparent">
           <div className="py-10 bg-transparent">
-            <HomePage name="Thomas Nguyen" />
+            <HomePage name="thomas nguyen" />
           </div>
           <Projects />
           <LeetCode username="thomasn8255" />

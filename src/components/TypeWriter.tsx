@@ -94,7 +94,7 @@ function TypeWriter({
         {/* Invisible placeholder to maintain layout */}
         <h1
           ref={line1PlaceholderRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-neutral-100 invisible whitespace-nowrap font-semibold"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-neutral-100 invisible whitespace-nowrap font-light"
           style={{
             fontFamily: "'Inter', sans-serif",
             letterSpacing: "-0.02em",
@@ -104,7 +104,7 @@ function TypeWriter({
         </h1>
         {/* Actual typed text positioned absolutely */}
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-neutral-100 absolute top-0 left-1/2 -translate-x-1/2 whitespace-nowrap font-semibold"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-neutral-100 absolute top-0 left-1/2 -translate-x-1/2 whitespace-nowrap font-light"
           style={{
             fontFamily: "'Inter', sans-serif",
             letterSpacing: "-0.02em",

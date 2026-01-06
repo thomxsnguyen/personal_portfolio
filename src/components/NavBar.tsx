@@ -4,6 +4,26 @@ function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
 
+  // Get current month and year
+  const currentDate = new Date();
+  const monthNames = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec",
+  ];
+  const currentMonthYear = `${
+    monthNames[currentDate.getMonth()]
+  }. ${currentDate.getFullYear()}`;
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -45,10 +65,10 @@ function NavBar() {
   };
 
   const navItems = [
-    { href: "#top", label: "Home", id: "top" },
-    { href: "#projects", label: "Projects", id: "projects" },
-    { href: "#leetcode", label: "LeetCode", id: "leetcode" },
-    { href: "#contact", label: "Contact", id: "contact" },
+    { href: "#top", label: "home", id: "top" },
+    { href: "#projects", label: "projects", id: "projects" },
+    { href: "#leetcode", label: "leetcode", id: "leetcode" },
+    { href: "#contact", label: "contact", id: "contact" },
   ];
 
   return (
@@ -70,7 +90,10 @@ function NavBar() {
               onClick={(e) => handleSmoothScroll(e, "#top")}
               className="flex items-center gap-2 group"
             >
-              <span className="font-bold text-sm md:text-base tracking-tight text-neutral-100" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <span
+                className="font-bold text-sm md:text-base tracking-tight text-neutral-100"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
                 TN
               </span>
             </a>
@@ -101,7 +124,7 @@ function NavBar() {
 
             {/* Year Badge */}
             <div className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-neutral-800 text-neutral-400 border border-neutral-700">
-              <span>2025</span>
+              <span>{currentMonthYear}</span>
             </div>
           </div>
         </div>
