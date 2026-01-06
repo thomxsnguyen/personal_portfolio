@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import TypeWriter from "../components/TypeWriter";
-import profilePic from "../assets/profilepic.png";
 
 interface HomePageProps {
   name: string;
@@ -51,7 +50,7 @@ function HomePage({ name }: HomePageProps) {
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-16">
           {/* Profile Image */}
           <img
-            src={profilePic}
+            src="/profilepic.JPG"
             alt="Thomas Nguyen"
             className="w-32 h-32 md:w-44 md:h-44 lg:w-48 lg:h-48 rounded-full object-cover ring-2 ring-neutral-700 flex-shrink-0"
           />
