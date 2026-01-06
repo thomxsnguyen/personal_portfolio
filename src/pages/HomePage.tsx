@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import TypeWriter from "../components/TypeWriter";
-import profilePic from "../assets/profilePic2.png";
 
 interface HomePageProps {
   name: string;
@@ -38,42 +37,43 @@ function HomePage({ name }: HomePageProps) {
     <section
       ref={sectionRef}
       id="home"
-      className={`flex flex-col items-center justify-center pt-48 md:pt-56 transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
-        isVisible ? "opacity-100" : "opacity-0"
+      className={`flex flex-col items-center justify-center pt-32 md:pt-40 transition-all duration-[1500ms] ease-out overflow-x-hidden ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       style={{
-        paddingBottom: "40vh",
+        paddingBottom: "20vh",
         minHeight: "100vh",
       }}
     >
-      <div className="w-full max-w-4xl mx-auto px-2">
-        <div className="flex flex-col items-center gap-12 md:gap-16">
-          {/* Title and Links Group */}
-          <div className="flex flex-col items-center gap-3">
-            <div className="overflow-hidden scale-75 md:scale-85 lg:scale-95">
+      <div className="w-full max-w-5xl mx-auto px-4">
+        {/* Hero Section */}
+        <div className="flex flex-col items-center mb-16">
+          {/* Hero Text */}
+          <div className="flex flex-col items-center text-center">
+            <div className="overflow-hidden mb-1">
               <TypeWriter
-                texts={[name, "Computer Science Student at UCI"]}
-                speeds={[50, 40]}
-                delays={[500, 300]}
+                texts={[name]}
+                speeds={[50]}
+                delays={[500]}
                 cursor={true}
               />
             </div>
+            
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-400 mb-10" style={{ fontFamily: "'Inter', sans-serif" }}>
+              Undergraduate @ UCI with a specialization in Intelligent Systems
+            </p>
 
-            {/* Links */}
-            <div className="flex items-center space-x-3 scale-90 md:scale-100">
+            {/* Social Links */}
+            <div className="flex items-center gap-5">
               <a
                 href="https://github.com/thomxsnguyen"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="text-blue-300 hover:scale-125 transition-transform duration-300 p-0.5"
+                className="group relative p-3 bg-neutral-800 text-neutral-300 rounded-xl hover:bg-neutral-700 hover:text-white transition-all duration-300"
               >
-                <svg
-                  className="w-8 h-8 md:w-10 md:h-10"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
               </a>
               <a
@@ -81,49 +81,24 @@ function HomePage({ name }: HomePageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="text-blue-300 hover:scale-125 transition-transform duration-300 p-0.5"
+                className="group relative p-3 bg-neutral-800 text-neutral-300 rounded-xl hover:bg-neutral-700 hover:text-white transition-all duration-300"
               >
-                <svg
-                  className="w-8 h-8 md:w-10 md:h-10"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
-              <a href="#" aria-label="" className="hidden"></a>
               <a
                 href="/Nguyen,Thomas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="CV"
-                className="text-blue-300 hover:scale-110 transition-transform duration-300 p-0.5 text-lg md:text-xl font-bold"
+                aria-label="Resume"
+                className="group relative px-5 py-3 bg-neutral-800 text-neutral-300 rounded-xl font-medium text-sm hover:bg-neutral-700 hover:text-white transition-all duration-300 flex items-center gap-2"
               >
-                CV
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Resume
               </a>
-            </div>
-          </div>
-
-          {/* Profile Picture and About Me Box */}
-          <div
-            className="rounded-lg shadow-xl p-6 md:p-7 border-2 border-blue-200 w-[340px] sm:w-[380px] md:w-[450px] lg:w-[500px]"
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-          >
-            <div className="flex flex-col gap-4 md:gap-5 items-center">
-              <img
-                src={profilePic}
-                alt="profilepic"
-                className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg object-cover shadow-md object-center brightness-110 flex-shrink-0"
-              />
-              <p className="text-gray-500 leading-relaxed text-[11px] sm:text-xs md:text-sm">
-                Computer Science undergraduate at UC Irvine specializing in
-                software engineering, machine learning systems, and distributed
-                cloud architectures. Experienced in developing scalable
-                full-stack applications with React, Node.js, and Flutter.
-                Technical expertise spans implementing RESTful APIs, optimizing
-                database queries, and architecting PyTorch models for real-time
-                inference.
-              </p>
             </div>
           </div>
         </div>

@@ -28,113 +28,72 @@ function Contact() {
     };
   }, []);
 
+  const contactMethods = [
+    {
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      label: "Email",
+      value: "thomaswn@uci.edu",
+      href: "mailto:thomaswn@uci.edu",
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+      ),
+      label: "Phone",
+      value: "(737) 245-4267",
+      href: "tel:7372454267",
+    },
+  ];
+
   return (
     <section
       ref={sectionRef}
       id="contact"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-32 pb-16 md:pt-48 md:pb-32 min-h-screen flex flex-col justify-center transition-opacity duration-[2000ms] ease-out overflow-x-hidden ${
-        isVisible ? "opacity-100" : "opacity-0"
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-24 pb-16 md:pt-32 md:pb-24 min-h-[80vh] flex flex-col justify-center transition-all duration-1000 overflow-x-hidden ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="text-center mb-8 md:mb-12">
+      {/* Section Header */}
+      <div className="text-center mb-12 md:mb-16">
         <h2
-          className="text-4xl md:text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
-          style={{ fontFamily: "'Dancing Script', cursive" }}
+          className="text-4xl md:text-5xl font-bold text-neutral-100 mb-3"
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Contact Me
         </h2>
-        <p
-          className="text-lg md:text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
-          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
-        >
-          Let's connect and discuss opportunities
+        <p className="text-neutral-400 text-base" style={{ fontFamily: "'Inter', sans-serif" }}>
+          Let's connect
         </p>
       </div>
 
-      <div className="max-w-2xl mx-auto w-full">
-        <div className="bg-white rounded-lg shadow-xl p-6 md:p-8 border-2 border-blue-200">
-          {/* Contact Info */}
-          <div className="space-y-4 md:space-y-6">
-            {/* Email */}
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-blue-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500">Email</p>
-                <a
-                  href="mailto:thomaswn@uci.edu"
-                  className="text-lg font-medium text-gray-500 hover:text-blue-400 transition-colors"
-                >
-                  thomaswn@uci.edu
-                </a>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-blue-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500">Phone</p>
-                <a
-                  href="tel:7372454267"
-                  className="text-lg font-medium text-gray-500 hover:text-blue-400 transition-colors"
-                >
-                  (737) 245-4267
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Download Resume Button */}
-          <div className="mt-8 pt-8 border-t border-gray-200">
-            <a
-              href="/Nguyen,Thomas.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center px-6 py-3 bg-blue-400 text-white rounded-lg font-medium hover:bg-blue-500 transition-colors duration-300"
-            >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+      <div className="max-w-3xl mx-auto w-full">
+        {/* Main Contact Card */}
+        <div className="backdrop-blur-md bg-neutral-900/60 rounded-3xl shadow-xl border border-neutral-800 p-6 md:p-10">
+          {/* Contact Methods */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {contactMethods.map((method, index) => (
+              <a
+                key={index}
+                href={method.href}
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-neutral-800/50 border border-neutral-700 hover:border-neutral-600 transition-all duration-300"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              Resume
-            </a>
+                <div className="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center text-neutral-400 transition-colors duration-300 group-hover:text-neutral-200">
+                  {method.icon}
+                </div>
+                <div>
+                  <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium">{method.label}</p>
+                  <p className="text-neutral-300 font-semibold transition-colors duration-300" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    {method.value}
+                  </p>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </div>

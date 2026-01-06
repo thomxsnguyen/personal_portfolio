@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef } from "react";
+
 interface ExperienceItem {
   company: string;
   position: string;
@@ -5,6 +7,7 @@ interface ExperienceItem {
   location: string;
   description: string[];
   image?: string;
+  type: "work" | "research";
 }
 
 interface ExperienceProps {
@@ -12,7 +15,30 @@ interface ExperienceProps {
 }
 
 function Experience({ experiences }: ExperienceProps) {
-  // Default experience data
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: "-50px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const defaultExperiences: ExperienceItem[] = [
     {
       company: "dapLab",
@@ -23,6 +49,7 @@ function Experience({ experiences }: ExperienceProps) {
         "Researching software development methodologies and building tools to enhance laboratory workflows and data analysis capabilities.",
       ],
       image: "/daplab.png",
+      type: "research",
     },
     {
       company: "UCI Computational Cognitive Neuroscience Lab",
@@ -33,6 +60,7 @@ function Experience({ experiences }: ExperienceProps) {
         "Applying machine learning and computational models to understand cognitive processes and neural mechanisms.",
       ],
       image: "/uciccnl.png",
+      type: "research",
     },
     {
       company: "Calit2",
@@ -43,6 +71,7 @@ function Experience({ experiences }: ExperienceProps) {
         "Developed Python data pipelines for FEM simulation datasets and optimized PyTorch models for thermal prediction, achieving 3x improvement in stability and reducing inference latency from minutes to seconds.",
       ],
       image: "/calit2.png",
+      type: "research",
     },
     {
       company: "SportsStake",
@@ -53,6 +82,7 @@ function Experience({ experiences }: ExperienceProps) {
         "Built fantasy-sports features in Flutter/Dart and deployed Node.js backend on AWS with Docker and CI/CD, reducing deployment overhead by 70% and response latency by 40% with Redis caching.",
       ],
       image: "/sportsakecopy.png",
+      type: "work",
     },
     {
       company: "Boundary Remote Sensing Systems",
@@ -63,6 +93,7 @@ function Experience({ experiences }: ExperienceProps) {
         "Developed React/TypeScript frontend framework for geospatial visualization and built Express.js REST API for NetCDF4 data processing, improving retrieval speed by 35%.",
       ],
       image: "/brsscopy.png",
+      type: "work",
     },
   ];
 
@@ -70,235 +101,110 @@ function Experience({ experiences }: ExperienceProps) {
 
   return (
     <section
+      ref={sectionRef}
       id="experience"
-      className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-32 md:pt-48 pb-16 overflow-x-hidden"
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16 overflow-x-hidden transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
     >
+      {/* Section Header */}
       <div className="text-center mb-12 md:mb-16">
+        <p className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>Career Journey</p>
         <h2
-          className="text-4xl md:text-5xl text-blue-400 mb-4 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]"
-          style={{ fontFamily: "'Dancing Script', cursive" }}
+          className="text-3xl md:text-4xl font-bold text-neutral-100 mb-4"
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Experience
         </h2>
         <p
-          className="text-lg md:text-xl text-blue-300 drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]"
-          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
+          className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto"
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          My professional journey and accomplishments
+          My professional journey through research and industry
         </p>
       </div>
 
-      {/* Timeline Container */}
-      <div className="relative max-w-4xl mx-auto py-4 md:py-8">
-        {/* Timeline Items */}
+      {/* Timeline */}
+      <div className="relative max-w-4xl mx-auto">
+        {/* Vertical Line */}
+        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-neutral-700 transform -translate-x-1/2"></div>
+
         {experienceData.map((experience, index) => (
-          <div key={`experience-${index}`}>
-            <div className="relative mb-12 md:mb-16">
-              {/* Timeline Line Segment (except for last item) - Desktop only */}
-              {index < experienceData.length - 1 && (
-                <div className="hidden md:block absolute left-1/2 top-4 transform -translate-x-1/2 w-0.5 h-full bg-blue-400 z-0"></div>
+          <div
+            key={`experience-${index}`}
+            className={`relative mb-8 md:mb-12 ${
+              index % 2 === 0 ? "md:pr-[50%]" : "md:pl-[50%]"
+            }`}
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            {/* Timeline Dot */}
+            <div className="hidden md:flex absolute left-1/2 top-8 transform -translate-x-1/2 z-10">
+              <div className="w-3 h-3 rounded-full border-2 border-neutral-900 shadow-md bg-neutral-500"></div>
+            </div>
+
+            {/* Card */}
+            <div className={`group backdrop-blur-md bg-neutral-900/60 rounded-2xl shadow-lg border border-neutral-800 overflow-hidden hover:border-neutral-700 transition-all duration-500 ${
+              index % 2 === 0 ? "md:mr-8" : "md:ml-8"
+            }`}>
+              {/* Company Image */}
+              {experience.image && (
+                <div className="relative h-32 md:h-40 bg-neutral-800 overflow-hidden">
+                  <img
+                    src={experience.image}
+                    alt={experience.company}
+                    className="w-full h-full object-cover opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-transparent to-transparent"></div>
+                  
+                  {/* Type Badge */}
+                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-900/80 text-neutral-400 border border-neutral-700">
+                    {experience.type === "research" ? "Research" : "Industry"}
+                  </div>
+                </div>
               )}
 
-              {/* Mobile: Single column view */}
-              <div className="md:hidden w-full">
-                <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-4 hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                  {experience.image ? (
-                    <div className="w-full h-32 bg-gray-100 rounded-lg mb-4 overflow-hidden">
-                      <img
-                        src={experience.image}
-                        alt={experience.company}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-full h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg mb-4 flex items-center justify-center">
-                      <span className="text-gray-400 text-xs">
-                        {experience.company}
-                      </span>
-                    </div>
-                  )}
-                  <h3 className="text-lg font-bold text-gray-500 mb-2">
-                    {experience.position}
-                  </h3>
-                  <p
-                    className="text-xl text-blue-400 mb-3"
-                    style={{ fontFamily: "'Dancing Script', cursive" }}
-                  >
-                    @ {experience.company}
-                  </p>
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <svg
-                      className="w-4 h-4 mr-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
+              {/* Content */}
+              <div className="p-5 md:p-6">
+                {/* Position */}
+                <h3 className="text-lg md:text-xl font-semibold text-neutral-100 mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  {experience.position}
+                </h3>
+
+                {/* Company */}
+                <p className="text-base md:text-lg font-medium text-neutral-400 mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  {experience.company}
+                </p>
+
+                {/* Duration & Location */}
+                <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-500 mb-4">
+                  <span className="inline-flex items-center gap-1.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     {experience.duration}
-                  </div>
-                  <ul className="space-y-2">
-                    {experience.description.map((item, itemIndex) => (
-                      <li
-                        key={itemIndex}
-                        className="text-gray-700 text-sm flex items-start"
-                      >
-                        <span className="text-blue-400 mr-2 mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Desktop: Timeline view */}
-              <div className="hidden md:flex items-start relative w-full">
-                {/* Left Side Content (for even indices) */}
-                <div
-                  className={`w-1/2 ${index % 2 === 0 ? "pr-8" : ""} relative`}
-                >
-                  {index % 2 === 0 && (
-                    <>
-                      <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-4 md:p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                        {/* Image Placeholder */}
-                        {experience.image ? (
-                          <div className="w-full h-32 md:h-40 bg-gray-100 rounded-lg mb-4 overflow-hidden">
-                            <img
-                              src={experience.image}
-                              alt={experience.company}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-full h-40 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg mb-4 flex items-center justify-center">
-                            <span className="text-gray-400 text-sm">
-                              {experience.company}
-                            </span>
-                          </div>
-                        )}
-
-                        <h3 className="text-xl font-bold text-gray-500 mb-2">
-                          {experience.position}
-                        </h3>
-                        <p
-                          className="text-2xl text-blue-400 mb-3"
-                          style={{ fontFamily: "'Dancing Script', cursive" }}
-                        >
-                          @ {experience.company}
-                        </p>
-                        <div className="flex items-center text-sm text-gray-500 mb-4">
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                            />
-                          </svg>
-                          {experience.duration}
-                        </div>
-                        <ul className="space-y-2">
-                          {experience.description.map((item, itemIndex) => (
-                            <li
-                              key={itemIndex}
-                              className="text-gray-700 text-sm flex items-start"
-                            >
-                              <span className="text-blue-400 mr-2 mt-1">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </>
-                  )}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {experience.location}
+                  </span>
                 </div>
 
-                {/* Timeline Dot with Year - Desktop only */}
-                <div className="hidden md:flex absolute left-1/2 top-20 transform -translate-x-1/2 items-center z-10">
-                  <div className="w-4 h-4 bg-blue-400 rounded-full border-4 border-white shadow-lg"></div>
-                  <div
-                    className={`absolute bg-blue-400 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap ${
-                      index % 2 === 0 ? "-right-16" : "-left-16"
-                    }`}
-                  >
-                    {experience.duration.split(" ")[1]}
-                  </div>
-                </div>
-
-                {/* Right Side Content (for odd indices) */}
-                <div
-                  className={`w-1/2 ${index % 2 === 1 ? "pl-8" : ""} relative`}
-                >
-                  {index % 2 === 1 && (
-                    <>
-                      <div className="bg-white border-2 border-blue-200 rounded-lg shadow-xl p-4 md:p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                        {/* Image Placeholder */}
-                        {experience.image ? (
-                          <div className="w-full h-32 md:h-40 bg-gray-100 rounded-lg mb-4 overflow-hidden">
-                            <img
-                              src={experience.image}
-                              alt={experience.company}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-full h-40 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg mb-4 flex items-center justify-center">
-                            <span className="text-gray-400 text-sm">
-                              {experience.company}
-                            </span>
-                          </div>
-                        )}
-
-                        <h3 className="text-xl font-bold text-gray-500 mb-2">
-                          {experience.position}
-                        </h3>
-                        <p
-                          className="text-2xl text-blue-400 mb-3"
-                          style={{ fontFamily: "'Dancing Script', cursive" }}
-                        >
-                          @ {experience.company}
-                        </p>
-                        <div className="flex items-center text-sm text-gray-500 mb-4">
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                            />
-                          </svg>
-                          {experience.duration}
-                        </div>
-                        <ul className="space-y-2">
-                          {experience.description.map((item, itemIndex) => (
-                            <li
-                              key={itemIndex}
-                              className="text-gray-700 text-sm flex items-start"
-                            >
-                              <span className="text-blue-400 mr-2 mt-1">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </>
-                  )}
-                </div>
+                {/* Description */}
+                <ul className="space-y-2">
+                  {experience.description.map((item, itemIndex) => (
+                    <li
+                      key={itemIndex}
+                      className="text-neutral-400 text-sm leading-relaxed flex items-start"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      <span className="text-neutral-600 mr-2 mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

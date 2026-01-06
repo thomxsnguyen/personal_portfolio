@@ -1,21 +1,33 @@
+/* Standard cursor */
 * {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">🏂</text></svg>')
-      0 0,
-    auto;
+  cursor: default;
 }
 
 /* For clickable elements */
 a,
-button {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">🏂</text></svg>')
-      0 0,
-    pointer;
+button,
+[role="button"] {
+  cursor: pointer;
 }
 
 /* For input fields */
 input,
-textarea {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">🏂</text></svg>')
-      0 0,
-    text;
+textarea,
+select {
+  cursor: text;
+}
+
+/* Smooth transitions for all interactive elements */
+a,
+button,
+[role="button"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #64748b;
+  outline-offset: 2px;
+  border-radius: 8px;
 }

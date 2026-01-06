@@ -17,21 +17,27 @@ function SnowParticles({ className, count = 40 }: SnowParticlesProps) {
     if (prefersReduced) return;
 
     const particles: HTMLDivElement[] = [];
+
     for (let i = 0; i < count; i++) {
       const flake = document.createElement("div");
-      const size = Math.random() * 3 + 2; // 2-5px (larger)
-      const duration = Math.random() * 6 + 6; // 6-12s
-      const delay = Math.random() * 6; // 0-6s
+      const size = 2 + Math.random() * 3; // 2-5px
+      const opacity = 0.15 + Math.random() * 0.25; // 0.15-0.4
+      const duration = Math.random() * 10 + 8; // 8-18s
+      const delay = Math.random() * 8; // 0-8s
       const left = Math.random() * 100; // vw percent
+      const drift = (Math.random() - 0.5) * 30; // horizontal drift
+
       flake.style.position = "absolute";
       flake.style.left = `${left}%`;
-      flake.style.top = `${-Math.random() * 20}%`;
+      flake.style.top = `${-Math.random() * 15}%`;
       flake.style.width = `${size}px`;
       flake.style.height = `${size}px`;
-      flake.style.borderRadius = "9999px";
-      flake.style.background = "rgba(180,180,180,0.7)";
-      flake.style.boxShadow = "0 0 6px rgba(180,180,180,0.5)";
+      flake.style.borderRadius = "50%";
+      flake.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
       flake.style.animation = `snow-fall ${duration}s linear ${delay}s infinite`;
+      flake.style.transform = `translateX(${drift}px)`;
+      flake.style.pointerEvents = "none";
+      
       container.appendChild(flake);
       particles.push(flake);
     }

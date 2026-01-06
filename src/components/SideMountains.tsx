@@ -1,45 +1,9 @@
 function SideMountains() {
   return (
     <>
-      {/* Left side mountain with morning sky - FULL HEIGHT - Hidden on mobile */}
-      <div className="hidden md:block fixed left-0 top-0 h-screen pointer-events-none z-[-1] drop-shadow-lg w-[280px] lg:w-[320px] xl:w-[350px]">
-        {/* Sky background layer - fills container without scaling */}
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 350 1080"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-0 left-0"
-        >
-          {/* Morning sky gradient */}
-          <defs>
-            <linearGradient
-              id="skyGradientLeft"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.5" />
-              <stop offset="40%" stopColor="#BFDBFE" stopOpacity="0.4" />
-              <stop offset="70%" stopColor="#DBEAFE" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#F0F9FF" stopOpacity="0.1" />
-            </linearGradient>
-          </defs>
-
-          {/* Sky background */}
-          <rect
-            x="0"
-            y="0"
-            width="350"
-            height="1080"
-            fill="url(#skyGradientLeft)"
-          />
-        </svg>
-
-        {/* Clouds and mountains layer - maintains aspect ratio */}
+      {/* Left side mountain - FULL HEIGHT - Hidden on mobile */}
+      <div className="hidden md:block fixed left-0 top-0 h-screen pointer-events-none z-[-1] w-[280px] lg:w-[320px] xl:w-[350px]">
+        {/* Mountains layer */}
         <svg
           width="100%"
           height="100%"
@@ -49,102 +13,23 @@ function SideMountains() {
           xmlns="http://www.w3.org/2000/svg"
           className="absolute top-0 left-0"
         >
-          {/* Subtle clouds */}
-          <ellipse
-            cx="180"
-            cy="200"
-            rx="60"
-            ry="20"
-            fill="white"
-            opacity="0.15"
-          />
-          <ellipse
-            cx="150"
-            cy="210"
-            rx="40"
-            ry="15"
-            fill="white"
-            opacity="0.12"
-          />
-          <ellipse
-            cx="210"
-            cy="205"
-            rx="45"
-            ry="18"
-            fill="white"
-            opacity="0.13"
-          />
-
-          <ellipse
-            cx="100"
-            cy="350"
-            rx="50"
-            ry="18"
-            fill="white"
-            opacity="0.1"
-          />
-          <ellipse
-            cx="130"
-            cy="355"
-            rx="35"
-            ry="12"
-            fill="white"
-            opacity="0.12"
-          />
-
           {/* Bottom mountains */}
           <path
             d="M0 1080 L70 930 L140 980 L210 900 L280 960 L350 860 L350 1080 Z"
-            fill="#9CA3AF"
-            opacity="0.5"
+            fill="#1a1a1a"
+            opacity="0.8"
           />
           <path
             d="M0 1080 L50 1000 L100 1040 L150 970 L200 1030 L250 940 L300 1000 L350 1080 Z"
-            fill="#6B7280"
-            opacity="0.7"
+            fill="#0f0f0f"
+            opacity="0.9"
           />
         </svg>
       </div>
 
-      {/* Right side mountain with morning sky - FULL HEIGHT - Hidden on mobile */}
-      <div className="hidden md:block fixed right-0 top-0 h-screen pointer-events-none z-[-1] drop-shadow-lg w-[280px] lg:w-[320px] xl:w-[350px]">
-        {/* Sky background layer - fills container without scaling */}
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 350 1080"
-          preserveAspectRatio="none"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-0 left-0"
-        >
-          {/* Morning sky gradient */}
-          <defs>
-            <linearGradient
-              id="skyGradientRight"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.5" />
-              <stop offset="40%" stopColor="#BFDBFE" stopOpacity="0.4" />
-              <stop offset="70%" stopColor="#DBEAFE" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#F0F9FF" stopOpacity="0.1" />
-            </linearGradient>
-          </defs>
-
-          {/* Sky background */}
-          <rect
-            x="0"
-            y="0"
-            width="350"
-            height="1080"
-            fill="url(#skyGradientRight)"
-          />
-        </svg>
-
-        {/* Clouds and mountains layer - maintains aspect ratio */}
+      {/* Right side mountain - FULL HEIGHT - Hidden on mobile */}
+      <div className="hidden md:block fixed right-0 top-0 h-screen pointer-events-none z-[-1] w-[280px] lg:w-[320px] xl:w-[350px]">
+        {/* Mountains layer */}
         <svg
           width="100%"
           height="100%"
@@ -154,59 +39,16 @@ function SideMountains() {
           xmlns="http://www.w3.org/2000/svg"
           className="absolute top-0 left-0"
         >
-          {/* Subtle clouds */}
-          <ellipse
-            cx="170"
-            cy="220"
-            rx="55"
-            ry="18"
-            fill="white"
-            opacity="0.15"
-          />
-          <ellipse
-            cx="200"
-            cy="225"
-            rx="40"
-            ry="15"
-            fill="white"
-            opacity="0.12"
-          />
-          <ellipse
-            cx="145"
-            cy="215"
-            rx="38"
-            ry="16"
-            fill="white"
-            opacity="0.13"
-          />
-
-          <ellipse
-            cx="250"
-            cy="380"
-            rx="48"
-            ry="17"
-            fill="white"
-            opacity="0.1"
-          />
-          <ellipse
-            cx="220"
-            cy="385"
-            rx="32"
-            ry="13"
-            fill="white"
-            opacity="0.12"
-          />
-
           {/* Bottom mountains */}
           <path
             d="M0 860 L70 960 L140 900 L210 980 L280 930 L350 1080 L0 1080 Z"
-            fill="#9CA3AF"
-            opacity="0.5"
+            fill="#1a1a1a"
+            opacity="0.8"
           />
           <path
             d="M0 1000 L35 940 L85 1030 L140 970 L195 1040 L245 1000 L295 940 L350 960 L350 1080 L0 1080 Z"
-            fill="#6B7280"
-            opacity="0.7"
+            fill="#0f0f0f"
+            opacity="0.9"
           />
         </svg>
       </div>

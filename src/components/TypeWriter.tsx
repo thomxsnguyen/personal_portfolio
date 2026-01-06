@@ -94,26 +94,26 @@ function TypeWriter({
         {/* Invisible placeholder to maintain layout */}
         <h1
           ref={line1PlaceholderRef}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-400 invisible whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-neutral-100 invisible whitespace-nowrap font-semibold"
           style={{
-            fontFamily: "'Dancing Script', cursive",
-            letterSpacing: "0.05em",
+            fontFamily: "'Inter', sans-serif",
+            letterSpacing: "-0.02em",
           }}
         >
           {texts[0] || ""}
         </h1>
         {/* Actual typed text positioned absolutely */}
         <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-400 absolute top-0 left-1/2 -translate-x-1/2 whitespace-nowrap drop-shadow-[0_3px_6px_rgba(255,255,255,0.9)]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-neutral-100 absolute top-0 left-1/2 -translate-x-1/2 whitespace-nowrap font-semibold"
           style={{
-            fontFamily: "'Dancing Script', cursive",
-            letterSpacing: "0.05em",
+            fontFamily: "'Inter', sans-serif",
+            letterSpacing: "-0.02em",
           }}
         >
           {displayTexts[0]}
           {cursor && (
             <span
-              className={`inline-block w-0.5 md:w-1 h-14 sm:h-16 md:h-20 lg:h-24 bg-blue-400 ml-1 transition-opacity duration-100 ${
+              className={`inline-block w-0.5 md:w-1 h-14 sm:h-16 md:h-20 lg:h-24 bg-neutral-100 ml-1 transition-opacity duration-100 ${
                 !isComplete && currentLineIndex === 0
                   ? showCursor
                     ? "opacity-100"
@@ -126,24 +126,24 @@ function TypeWriter({
       </div>
 
       {/* Reserve space for the second line */}
-      <div className="relative mt-6 w-full flex justify-center">
+      <div className="relative mt-12 w-full flex justify-center px-4">
         {/* Invisible placeholder to maintain layout */}
         <h2
           ref={line2PlaceholderRef}
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-300 invisible whitespace-nowrap drop-shadow-[0_2px_3px_rgba(255,255,255,0.7)]"
-          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-400 invisible text-center"
+          style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
         >
           {texts[1] || ""}
         </h2>
         {/* Actual typed text positioned absolutely */}
         <h2
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-300 absolute top-0 left-1/2 -translate-x-1/2 whitespace-nowrap drop-shadow-[0_2px_3px_rgba(255,255,255,0.7)]"
-          style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-400 absolute top-0 left-1/2 -translate-x-1/2 text-center w-full px-4"
+          style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
         >
           {displayTexts[1]}
           {cursor && (
             <span
-              className={`inline-block w-0.5 h-5 sm:h-6 md:h-7 lg:h-8 bg-blue-300 ml-1 transition-opacity duration-100 ${
+              className={`inline-block w-0.5 h-4 sm:h-5 md:h-6 lg:h-7 bg-neutral-400 ml-1 transition-opacity duration-100 ${
                 !isComplete && currentLineIndex === 1
                   ? showCursor
                     ? "opacity-100"

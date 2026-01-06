@@ -4,7 +4,6 @@ import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
 import Projects from "./pages/Projects";
 import LeetCode from "./pages/LeetCode";
-import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
 import SnowParticles from "./components/SnowParticles";
 import SideMountains from "./components/SideMountains";
@@ -27,22 +26,28 @@ function App() {
     <div
       className="min-h-screen relative overflow-x-hidden"
       style={{
-        background:
-          "linear-gradient(to bottom, rgba(147, 197, 253, 0.15) 0%, rgba(191, 219, 254, 0.1) 40%, rgba(219, 234, 254, 0.08) 70%, rgba(240, 249, 255, 0.05) 100%)",
+        background: "linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0d0d0d 100%)",
       }}
     >
+      {/* Subtle gradient overlay for depth */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(ellipse at top, rgba(30, 30, 30, 0.5) 0%, transparent 60%)",
+        }}
+      />
+      
       <NavBar />
       <div id="top" className="relative">
         <SideMountains />
         <SnowParticles
-          className="fixed inset-0 pointer-events-none z-5"
-          count={isMobile ? 50 : 150}
+          className="fixed inset-0 pointer-events-none z-[2]"
+          count={isMobile ? 40 : 100}
         />
         <main className="relative z-[1] flex flex-col items-center justify-center w-full overflow-x-hidden pt-16 bg-transparent">
           <div className="py-10 bg-transparent">
             <HomePage name="Thomas Nguyen" />
           </div>
-          <Experience />
           <Projects />
           <LeetCode username="thomasn8255" />
           <Contact />
