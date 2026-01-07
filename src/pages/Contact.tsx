@@ -75,7 +75,7 @@ function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-24 pb-16 md:pt-32 md:pb-24 min-h-[80vh] flex flex-col justify-center transition-all duration-1000 overflow-x-hidden ${
+      className={`w-full max-w-6xl mx-auto px-4 md:px-6 pt-24 pb-16 md:pt-32 md:pb-24 flex flex-col justify-center transition-all duration-1000 overflow-x-hidden ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >

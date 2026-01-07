@@ -107,7 +107,7 @@ function HomePage({ name }: HomePageProps) {
                 </svg>
               </a>
               <a
-                href="/Nguyen,Thomas.pdf"
+                href="/Thomas' Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Resume"

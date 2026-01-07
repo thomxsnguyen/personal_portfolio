@@ -5,7 +5,7 @@ interface SnowParticlesProps {
   count?: number;
 }
 
-function SnowParticles({ className, count = 40 }: SnowParticlesProps) {
+function SnowParticles({ className, count = 60 }: SnowParticlesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -20,8 +20,8 @@ function SnowParticles({ className, count = 40 }: SnowParticlesProps) {
 
     for (let i = 0; i < count; i++) {
       const flake = document.createElement("div");
-      const size = 2 + Math.random() * 3; // 2-5px
-      const opacity = 0.15 + Math.random() * 0.25; // 0.15-0.4
+      const size = 2 + Math.random() * 4; // 2-6px
+      const opacity = 0.3 + Math.random() * 0.4; // 0.3-0.7
       const duration = Math.random() * 10 + 8; // 8-18s
       const delay = Math.random() * 8; // 0-8s
       const left = Math.random() * 100; // vw percent
