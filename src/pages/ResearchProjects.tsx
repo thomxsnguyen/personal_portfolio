@@ -56,6 +56,7 @@ function ResearchProjects() {
         "Plotly.js",
         "Papa Parse",
       ],
+      demoLink: "https://r01-scanner.vercel.app/",
       githubLink: "https://github.com/thomxsnguyen/ContextBanditDashboard",
       imageUrl: "/contextbandit.png",
     },

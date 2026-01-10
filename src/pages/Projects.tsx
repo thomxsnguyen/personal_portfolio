@@ -91,6 +91,7 @@ function Projects() {
         "Plotly.js",
         "Papa Parse",
       ],
+      demoLink: "https://r01-scanner.vercel.app/",
       githubLink: "https://github.com/thomxsnguyen/ContextBanditDashboard",
       imageUrl: "/contextbandit.png",
       fullDescription:
@@ -141,26 +142,70 @@ function Projects() {
       title: "Mock Sports Betting Platform",
       description:
         "Mobile app prototype for sports betting built with React Native and Expo. Features NativeWind styling, React Context state management, and real-time odds display mockups.",
-      technologies: ["React Native", "Expo", "TypeScript", "NativeWind", "Tailwind CSS"],
+      technologies: [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "NativeWind",
+        "Tailwind CSS",
+      ],
       demoLink: "https://sportstake.vercel.app",
       githubLink: "https://github.com/thomxsnguyen/sportstake",
       imageUrl: "/sportsstakeproject.png",
       videoUrl: "/mockuprecording (2).mov",
     },
     {
+      title: "AI Drift Monitor",
+      description:
+        "Statistical computing library implementing Kullback-Leibler divergence (D(P||Q)) for quantifying information loss between probability distributions. Features vectorized NumPy operations for efficient computation, input validation with epsilon smoothing to prevent log(0) errors, and support for discrete probability distributions. Designed for machine learning model evaluation, probability density comparison, and information theory applications in data science workflows.",
+      technologies: [
+        "Python",
+        "NumPy",
+        "SciPy",
+        "Statistical Computing",
+        "Information Theory",
+        "Machine Learning",
+        "Data Science",
+        "Pytest",
+        "Type Hints",
+        "Black",
+        "GitHub Actions",
+        "Jupyter",
+      ],
+      githubLink: "https://github.com/thomxsnguyen/AI-Drift-Monitor",
+    },
+    {
       title: "Emergency Signal Platform (In Progress)",
       description:
-        "Full-stack emergency communication platform with real-time signal broadcasting. Features TypeScript client-server architecture for rapid emergency response coordination.",
-      technologies: ["TypeScript", "React", "Node.js", "WebSockets"],
+        "Full-stack TypeScript emergency communication platform with interactive map-based signal broadcasting. React 19 frontend with Leaflet.js mapping, Express.js REST API backend, and MySQL database. Features real-time emergency response coordination with geographical location tracking and parallel development workflow using Concurrently.",
+      technologies: [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "React Leaflet",
+        "Leaflet.js",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "CORS",
+        "Jest",
+        "ESLint",
+        "TSX",
+        "Concurrently",
+      ],
       githubLink: "https://github.com/thomxsnguyen/emergency_signal_platform",
       imageUrl: "/emergency_signal_platform.png",
       fullDescription:
-        "A real-time emergency signal platform designed to facilitate rapid communication during critical situations. The system enables users to broadcast emergency signals and coordinate responses through a modern web interface. Built with a TypeScript-first approach across both client and server, the platform prioritizes reliability and low-latency communication essential for emergency scenarios.",
+        "A real-time emergency signal platform designed to facilitate rapid communication during critical situations. Built with a modern full-stack TypeScript architecture, the platform features an interactive map interface powered by React Leaflet for visualizing emergency signals geographically. The React 19 frontend communicates with an Express.js REST API backend connected to a MySQL database for persistent storage of emergency events and user data. The development workflow leverages Concurrently for parallel execution of frontend and backend servers, with comprehensive testing via Jest and code quality enforcement through ESLint. The system prioritizes type safety, scalability, and low-latency communication essential for emergency response scenarios.",
       howItWorks: [
-        "Real-time signal broadcasting between users",
-        "TypeScript client-server architecture for type safety",
-        "WebSocket connections for low-latency communication",
-        "Responsive interface for mobile and desktop access",
+        "Interactive map-based emergency signal broadcasting with Leaflet.js",
+        "React 19 frontend with TypeScript for type-safe UI components",
+        "Express.js REST API backend with MySQL database integration",
+        "CORS middleware enabling secure cross-origin communication",
+        "Parallel development workflow using Concurrently for frontend/backend",
+        "Jest testing framework for unit and integration tests",
+        "Vite build tool for fast development and optimized production builds",
       ],
       howToRun: [
         "Project currently in development - setup instructions coming soon",
@@ -210,7 +255,7 @@ function Projects() {
           research
         </h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-          {researchProjects.map((project, index) => (
+          {researchProjects.slice(0, 4).map((project, index) => (
             <div
               key={index}
               className={`group relative backdrop-blur-md bg-neutral-900/60 rounded-xl shadow-md border border-neutral-800 overflow-hidden hover:border-neutral-700 transition-all duration-300 cursor-pointer ${
@@ -417,7 +462,7 @@ function Projects() {
           personal
         </h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-          {personalProjects.map((project, index) => (
+          {personalProjects.slice(0, 4).map((project, index) => (
             <div
               key={index}
               className="group relative backdrop-blur-md bg-neutral-900/60 rounded-xl shadow-md border border-neutral-800 overflow-hidden hover:border-neutral-700 transition-all duration-300"

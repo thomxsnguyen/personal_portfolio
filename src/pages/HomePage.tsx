@@ -77,7 +77,7 @@ function HomePage({ name }: HomePageProps) {
             {/* Social Links */}
             <div className="  flex items-center gap-5">
               <a
-                href="https://github.com/thomxsnguyen"
+                href="https://github.com/thomxsnguyen?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
