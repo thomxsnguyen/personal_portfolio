@@ -138,24 +138,6 @@ function HomePage({ name }: HomePageProps) {
         {/* Experience Section */}
         <div className="w-full max-w-lg mx-auto">
           <div className="flex justify-center gap-16 md:gap-24">
-            {/* Current */}
-            <div className="text-center">
-              <p className="text-xs text-neutral-500 uppercase tracking-wider mb-4 font-extralight">
-                Current
-              </p>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-sm text-neutral-100 font-medium">
-                    Raytheon
-                  </p>
-                  <p className="text-xs text-neutral-500">
-                    Incoming SWE Intern
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Previous */}
             <div className="text-center">
               <p className="text-xs text-neutral-500 uppercase tracking-wider mb-4 font-extralight">
                 Previous
