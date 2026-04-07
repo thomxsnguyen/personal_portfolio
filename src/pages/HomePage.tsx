@@ -71,7 +71,7 @@ function HomePage({ name }: HomePageProps) {
               className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-400 mb-6"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              undergraduate @ uci with a specialization in intelligent systems
+              first year cs graduate @ ucsd
             </p>
 
             {/* Social Links */}
