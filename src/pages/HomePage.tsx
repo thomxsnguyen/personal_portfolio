@@ -19,7 +19,7 @@ function HomePage({ name }: HomePageProps) {
       {
         threshold: 0.2,
         rootMargin: "-100px",
-      }
+      },
     );
 
     if (sectionRef.current) {
@@ -145,6 +145,23 @@ function HomePage({ name }: HomePageProps) {
               </p>
               <div className="space-y-3">
                 <div>
+                  <p className="text-sm text-neutral-100 font-medium">
+                    Raytheon
+                  </p>
+                  <p className="text-xs text-neutral-500">
+                    Incoming SWE Intern
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Previous */}
+            <div className="text-center">
+              <p className="text-xs text-neutral-500 uppercase tracking-wider mb-4 font-extralight">
+                Previous
+              </p>
+              <div className="space-y-3">
+                <div>
                   <p className="text-sm text-neutral-100 font-medium">dapLab</p>
                   <p className="text-xs text-neutral-500">Research Assistant</p>
                 </div>
@@ -157,18 +174,9 @@ function HomePage({ name }: HomePageProps) {
                 <div>
                   <p className="text-sm text-neutral-100 font-medium">Calit2</p>
                   <p className="text-xs text-neutral-500">
-                    ML Reearch Assistant
+                    ML Research Assistant
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Previous */}
-            <div className="text-center">
-              <p className="text-xs text-neutral-500 uppercase tracking-wider mb-4 font-extralight">
-                Previous
-              </p>
-              <div className="space-y-3">
                 <div>
                   <p className="text-sm text-neutral-100 font-medium">
                     SportsStake
