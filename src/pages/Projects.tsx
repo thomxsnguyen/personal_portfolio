@@ -175,43 +175,6 @@ function Projects() {
       githubLink: "https://github.com/thomxsnguyen/AI-Drift-Monitor",
     },
     {
-      title: "Emergency Signal Platform (In Progress)",
-      description:
-        "Full-stack TypeScript emergency communication platform with interactive map-based signal broadcasting. React 19 frontend with Leaflet.js mapping, Express.js REST API backend, and MySQL database. Features real-time emergency response coordination with geographical location tracking and parallel development workflow using Concurrently.",
-      technologies: [
-        "React 19",
-        "TypeScript",
-        "Vite",
-        "React Leaflet",
-        "Leaflet.js",
-        "Tailwind CSS",
-        "Node.js",
-        "Express.js",
-        "MySQL",
-        "CORS",
-        "Jest",
-        "ESLint",
-        "TSX",
-        "Concurrently",
-      ],
-      githubLink: "https://github.com/thomxsnguyen/emergency_signal_platform",
-      imageUrl: "/emergency_signal_platform.png",
-      fullDescription:
-        "A real-time emergency signal platform designed to facilitate rapid communication during critical situations. Built with a modern full-stack TypeScript architecture, the platform features an interactive map interface powered by React Leaflet for visualizing emergency signals geographically. The React 19 frontend communicates with an Express.js REST API backend connected to a MySQL database for persistent storage of emergency events and user data. The development workflow leverages Concurrently for parallel execution of frontend and backend servers, with comprehensive testing via Jest and code quality enforcement through ESLint. The system prioritizes type safety, scalability, and low-latency communication essential for emergency response scenarios.",
-      howItWorks: [
-        "Interactive map-based emergency signal broadcasting with Leaflet.js",
-        "React 19 frontend with TypeScript for type-safe UI components",
-        "Express.js REST API backend with MySQL database integration",
-        "CORS middleware enabling secure cross-origin communication",
-        "Parallel development workflow using Concurrently for frontend/backend",
-        "Jest testing framework for unit and integration tests",
-        "Vite build tool for fast development and optimized production builds",
-      ],
-      howToRun: [
-        "Project currently in development - setup instructions coming soon",
-      ],
-    },
-    {
       title: "ArtistShuffler",
       description:
         "Full-stack Spotify playlist generator with Flask backend, React/TypeScript frontend, OAuth 2.0 auth, and real-time artist search via Spotipy API.",
