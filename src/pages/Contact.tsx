@@ -46,8 +46,8 @@ function Contact() {
         </svg>
       ),
       label: "Email",
-      value: "thomaswn@uci.edu",
-      href: "mailto:thomaswn@uci.edu",
+      value: "thomasn8255@gmail.com",
+      href: "mailto:thomasn8255@gmail.com",
     },
     {
       icon: (
