@@ -72,29 +72,6 @@ function PersonalProjects() {
       githubLink: "https://github.com/thomxsnguyen/AI-Drift-Monitor",
     },
     {
-      title: "Emergency Signal Platform (In Progress)",
-      description:
-        "Full-stack TypeScript emergency communication platform with interactive map-based signal broadcasting. React 19 frontend with Leaflet.js mapping, Express.js REST API backend, and MySQL database. Features real-time emergency response coordination with geographical location tracking and parallel development workflow using Concurrently.",
-      technologies: [
-        "React 19",
-        "TypeScript",
-        "Vite",
-        "React Leaflet",
-        "Leaflet.js",
-        "Tailwind CSS",
-        "Node.js",
-        "Express.js",
-        "MySQL",
-        "CORS",
-        "Jest",
-        "ESLint",
-        "TSX",
-        "Concurrently",
-      ],
-      githubLink: "https://github.com/thomxsnguyen/emergency_signal_platform",
-      imageUrl: "/emergency_signal_platform.png",
-    },
-    {
       title: "ArtistShuffler",
       description:
         "Full-stack Spotify playlist generator with Flask backend, React/TypeScript frontend, OAuth 2.0 auth, and real-time artist search via Spotipy API.",

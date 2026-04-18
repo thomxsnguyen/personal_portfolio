@@ -37,14 +37,6 @@ function ResearchProjects() {
 
   const researchProjects: ProjectItem[] = [
     {
-      title: "Human Decision Simulation Platform (In Progress)",
-      description:
-        "End-to-end ML pipeline converting experimental logs into replayable decision transcripts. Integrates LLM-based policy engine with leak-free preprocessing and deterministic action validation.",
-      technologies: ["Python", "Jupyter", "Transformers", "Data Pipelines"],
-      githubLink: "https://github.com/thomxsnguyen/centaur",
-      imageUrl: "/centaur.png",
-    },
-    {
       title: "Context Bandit Dashboard",
       description:
         "Interactive dashboard for real-time visualization of bandit experiment data. Enables automated data quality assessment and participant behavior analysis.",
