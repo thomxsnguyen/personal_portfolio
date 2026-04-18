@@ -60,26 +60,6 @@ function Projects() {
 
   const researchProjects: ProjectItem[] = [
     {
-      title: "Human Decision Simulation Platform (In Progress)",
-      description:
-        "End-to-end ML pipeline converting experimental logs into replayable decision transcripts. Integrates LLM-based policy engine with leak-free preprocessing and deterministic action validation.",
-      technologies: ["Python", "Jupyter", "Transformers", "Data Pipelines"],
-      githubLink: "https://github.com/thomxsnguyen/centaur",
-      imageUrl: "/centaur.png",
-      fullDescription:
-        "Understanding how humans make decisions under uncertainty is a core challenge in cognitive science. Traditional approaches analyze participant data post-hoc, but cannot directly test whether a computational model would behave similarly in real-time. This platform bridges that gap by creating a 'Centaur-style' simulation environment where LLM-based agents face the exact same experimental conditions as human participants. The system converts raw experimental logs into structured decision transcripts, ensuring agents only observe information that was actually visible to participants (leak-free preprocessing). By comparing human choices against model predictions trial-by-trial, researchers can rigorously evaluate whether AI systems capture the nuances of human decision-making—or where they systematically diverge.",
-      howItWorks: [
-        "Converts experimental logs into structured, replayable decision transcripts",
-        "Implements leak-free preprocessing ensuring agents only see participant-visible data",
-        "Integrates Centaur-style LLM policy as drop-in decision engine",
-        "Enforces strict output parsing for deterministic model-environment interfaces",
-        "Compares human vs simulated behavior using distributional metrics",
-      ],
-      howToRun: [
-        "Project currently in development - setup instructions coming soon",
-      ],
-    },
-    {
       title: "Context Bandit Dashboard",
       description:
         "Interactive dashboard for real-time visualization of bandit experiment data. Enables automated data quality assessment and participant behavior analysis.",
