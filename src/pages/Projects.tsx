@@ -119,7 +119,7 @@ function Projects() {
 
   const personalProjects: ProjectItem[] = [
     {
-      title: "Signal Less",
+      title: "SignalLess",
       description:
         "Built for the AMD Cloud Hackathon. Multi-agent AI diagnostic system that collects real PC hardware metrics, runs them through a 4-agent CrewAI pipeline (intake → classify → diagnose → solve) powered by Qwen2.5-14B on an AMD MI300X GPU via vLLM and ROCm, and delivers step-by-step fix instructions through a Next.js dashboard — entirely on open source AMD infrastructure.",
       technologies: [
@@ -136,6 +136,7 @@ function Projects() {
         "LiteLLM",
       ],
       githubLink: "https://github.com/thomxsnguyen/signal-less",
+      imageUrl: "/signal_less.png",
     },
     {
       title: "Mock Sports Betting Platform",
