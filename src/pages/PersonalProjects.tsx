@@ -8,6 +8,7 @@ interface ProjectItem {
   demoLink?: string;
   githubLink?: string;
   imageUrl?: string;
+  imagePosition?: string;
 }
 
 function PersonalProjects() {
@@ -53,8 +54,9 @@ function PersonalProjects() {
         "Qwen2.5-14B",
         "LiteLLM",
       ],
-      githubLink: "https://github.com/thomxsnguyen/signal-less",
+      githubLink: "https://github.com/thomxsnguyen/signal_less",
       imageUrl: "/signal_less.png",
+      imagePosition: "object-top",
     },
     {
       title: "Mock Sports Betting Platform",
@@ -168,7 +170,7 @@ function PersonalProjects() {
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                  className={`w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 ${project.imagePosition || "object-center"}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-transparent to-transparent"></div>
               </div>
