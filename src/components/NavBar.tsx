@@ -30,7 +30,7 @@ function NavBar() {
       setIsScrolled(scrollTop > 50);
 
       // Determine active section
-      const sections = ["contact", "leetcode", "projects", "top"];
+      const sections = ["contact", "projects", "top"];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -67,7 +67,6 @@ function NavBar() {
   const navItems = [
     { href: "#top", label: "home", id: "top" },
     { href: "#projects", label: "projects", id: "projects" },
-    { href: "#leetcode", label: "leetcode", id: "leetcode" },
     { href: "#contact", label: "contact", id: "contact" },
   ];
 

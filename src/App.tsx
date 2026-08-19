@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
 import Projects from "./pages/Projects";
-import LeetCode from "./pages/LeetCode";
 import Contact from "./pages/Contact";
 import SnowParticles from "./components/SnowParticles";
 import SideMountains from "./components/SideMountains";
@@ -26,7 +25,6 @@ function MainPage({ isMobile }: { isMobile: boolean }) {
             <HomePage name="thomas nguyen" />
           </div>
           <Projects />
-          <LeetCode username="thomasn8255" />
           <Contact />
         </main>
       </div>
