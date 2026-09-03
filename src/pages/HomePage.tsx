@@ -47,16 +47,9 @@ function HomePage({ name }: HomePageProps) {
     >
       <div className="w-full max-w-5xl mx-auto px-4">
         {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-16">
-          {/* Profile Image */}
-          <img
-            src="/profilepic.png"
-            alt="Thomas Nguyen"
-            className="w-32 h-32 md:w-44 md:h-44 lg:w-48 lg:h-48 rounded-full object-cover ring-2 ring-neutral-700 flex-shrink-0"
-          />
-
+        <div className="flex items-center justify-center mb-16">
           {/* Hero Text */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col items-center text-center">
             <div className="overflow-hidden mb-1">
               <TypeWriter
                 texts={[name]}
@@ -107,7 +100,7 @@ function HomePage({ name }: HomePageProps) {
                 </svg>
               </a>
               <a
-                href="/Thomas' Resume.pdf"
+                href="/Thomas_Nguyen.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Resume"
@@ -136,62 +129,50 @@ function HomePage({ name }: HomePageProps) {
         <div className="w-40 h-px bg-neutral-700 mx-auto my-12 font-extralight"></div>
 
         {/* Experience Section */}
-        <div className="w-full max-w-lg mx-auto">
-          <div className="flex justify-center gap-16 md:gap-24">
-            {/* Current */}
-            <div className="text-center">
-              <p className="text-xs text-neutral-500 uppercase tracking-wider mb-4 font-extralight">
-                Current
+        <div className="w-full max-w-lg mx-auto text-center">
+          <p className="text-xs text-neutral-500 uppercase tracking-wider mb-4 font-extralight">
+            Experience
+          </p>
+          <div className="space-y-3">
+            <div>
+              <p className="text-sm text-neutral-100 font-medium">
+                Raytheon (RTX)
               </p>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-sm text-neutral-100 font-medium">
-                    Raytheon
-                  </p>
-                  <p className="text-xs text-neutral-500">
-                    Incoming SWE Intern
-                  </p>
-                </div>
-              </div>
+              <p className="text-xs text-neutral-500">
+                Software Engineer Intern (Jun 2026 – Aug 2026)
+              </p>
             </div>
-
-            {/* Previous */}
-            <div className="text-center">
-              <p className="text-xs text-neutral-500 uppercase tracking-wider mb-4 font-extralight">
-                Previous
+            <div>
+              <p className="text-sm text-neutral-100 font-medium">dapLab</p>
+              <p className="text-xs text-neutral-500">
+                Research Assistant (Oct 2025 – May 2026)
               </p>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-sm text-neutral-100 font-medium">dapLab</p>
-                  <p className="text-xs text-neutral-500">Research Assistant</p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-100 font-medium">
-                    UCI CCNL
-                  </p>
-                  <p className="text-xs text-neutral-500">Research Assistant</p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-100 font-medium">Calit2</p>
-                  <p className="text-xs text-neutral-500">
-                    ML Research Assistant
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-100 font-medium">
-                    SportsStake
-                  </p>
-                  <p className="text-xs text-neutral-500">
-                    Software Engineer Intern
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-100 font-medium">BRSS</p>
-                  <p className="text-xs text-neutral-500">
-                    Software Developer Intern
-                  </p>
-                </div>
-              </div>
+            </div>
+            <div>
+              <p className="text-sm text-neutral-100 font-medium">
+                SportsStake
+              </p>
+              <p className="text-xs text-neutral-500">
+                Software Engineer Intern (Jun 2025 – Sep 2025)
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-neutral-100 font-medium">UCI CCNL</p>
+              <p className="text-xs text-neutral-500">
+                Research Assistant (Jan 2025 – Jun 2025)
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-neutral-100 font-medium">Calit2</p>
+              <p className="text-xs text-neutral-500">
+                ML Research Assistant (Oct 2024 – May 2025)
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-neutral-100 font-medium">BRSS</p>
+              <p className="text-xs text-neutral-500">
+                Software Developer Intern (Jun 2024 – Sep 2024)
+              </p>
             </div>
           </div>
         </div>

@@ -549,29 +549,6 @@ function Projects() {
             </div>
           ))}
         </div>
-        {/* More Research Projects Button */}
-        <div className="flex justify-start mt-6">
-          <Link
-            to="/research-projects"
-            className="inline-flex items-center gap-2 px-4 py-2 text-neutral-400 hover:text-neutral-100 transition-colors text-sm"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            more research projects
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </Link>
-        </div>
       </div>
 
       {/* Video Modal */}
