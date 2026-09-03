@@ -137,26 +137,6 @@ function Projects() {
       imagePosition: "object-top",
     },
     {
-      title: "AI Drift Monitor",
-      description:
-        "Statistical computing library implementing Kullback-Leibler divergence (D(P||Q)) for quantifying information loss between probability distributions. Features vectorized NumPy operations for efficient computation, input validation with epsilon smoothing to prevent log(0) errors, and support for discrete probability distributions. Designed for machine learning model evaluation, probability density comparison, and information theory applications in data science workflows.",
-      technologies: [
-        "Python",
-        "NumPy",
-        "SciPy",
-        "Statistical Computing",
-        "Information Theory",
-        "Machine Learning",
-        "Data Science",
-        "Pytest",
-        "Type Hints",
-        "Black",
-        "GitHub Actions",
-        "Jupyter",
-      ],
-      githubLink: "https://github.com/thomxsnguyen/AI-Drift-Monitor",
-    },
-    {
       title: "Mock Sports Betting Platform",
       description:
         "Mobile app prototype for sports betting built with React Native and Expo. Features NativeWind styling, React Context state management, and real-time odds display mockups.",
@@ -186,6 +166,26 @@ function Projects() {
       ],
       githubLink: "https://github.com/thomxsnguyen/ArtistBlender",
       imageUrl: "/artistblender.png",
+    },
+    {
+      title: "AI Drift Monitor",
+      description:
+        "Statistical computing library implementing Kullback-Leibler divergence (D(P||Q)) for quantifying information loss between probability distributions. Features vectorized NumPy operations for efficient computation, input validation with epsilon smoothing to prevent log(0) errors, and support for discrete probability distributions. Designed for machine learning model evaluation, probability density comparison, and information theory applications in data science workflows.",
+      technologies: [
+        "Python",
+        "NumPy",
+        "SciPy",
+        "Statistical Computing",
+        "Information Theory",
+        "Machine Learning",
+        "Data Science",
+        "Pytest",
+        "Type Hints",
+        "Black",
+        "GitHub Actions",
+        "Jupyter",
+      ],
+      githubLink: "https://github.com/thomxsnguyen/AI-Drift-Monitor",
     },
   ];
 
