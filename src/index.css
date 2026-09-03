@@ -110,15 +110,6 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Line clamp utility */
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 /* Fade in animation for expanded content */
 @keyframes fadeIn {
   from {

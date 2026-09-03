@@ -38,6 +38,23 @@ function PersonalProjects() {
 
   const personalProjects: ProjectItem[] = [
     {
+      title: "PC Diagnostic",
+      description:
+        "Cross-platform system monitor for real-time CPU, memory, storage, network, thermal, and fan telemetry. Includes threshold-based alerts and on-demand AI diagnostics that turn live system data into actionable troubleshooting recommendations.",
+      technologies: [
+        "Python",
+        "CrewAI",
+        "Rich",
+        "psutil",
+        "PyInstaller",
+        "macOS",
+        "Windows",
+      ],
+      githubLink: "https://github.com/thomxsnguyen/pc_diagnostic",
+      imageUrl: "/pc_diagnostic.png",
+      imagePosition: "object-top",
+    },
+    {
       title: "AI Drift Monitor",
       description:
         "Statistical computing library implementing Kullback-Leibler divergence (D(P||Q)) for quantifying information loss between probability distributions. Features vectorized NumPy operations for efficient computation, input validation with epsilon smoothing to prevent log(0) errors, and support for discrete probability distributions. Designed for machine learning model evaluation, probability density comparison, and information theory applications in data science workflows.",
