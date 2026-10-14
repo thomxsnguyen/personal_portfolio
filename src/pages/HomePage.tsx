@@ -163,7 +163,7 @@ function HomePage({ name }: HomePageProps) {
               </p>
             </div>
             <div>
-              <p className="text-sm text-neutral-100 font-medium">Calit2</p>
+              <p className="text-sm text-neutral-100 font-medium">UCI Calit2</p>
               <p className="text-xs text-neutral-500">
                 ML Research Assistant (Oct 2024 – May 2025)
               </p>

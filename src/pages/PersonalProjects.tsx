@@ -38,6 +38,15 @@ function PersonalProjects() {
 
   const personalProjects: ProjectItem[] = [
     {
+      title: "Distributed Job Queue",
+      description:
+        "Runs background jobs across multiple workers and tracks their progress in a React dashboard. Built to demonstrate reliable job processing with Go and PostgreSQL, using repository dependency audits as a practical example.",
+      technologies: ["Go", "PostgreSQL", "React"],
+      githubLink: "https://github.com/thomxsnguyen/dependecy-graph-auditor",
+      imageUrl: "/distributed_job_queue.png",
+      imagePosition: "object-top",
+    },
+    {
       title: "PC Diagnostic",
       description:
         "Cross-platform system monitor for real-time CPU, memory, storage, network, thermal, and fan telemetry. Includes threshold-based alerts and on-demand AI diagnostics that turn live system data into actionable troubleshooting recommendations.",
